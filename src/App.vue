@@ -8,7 +8,7 @@
         <template v-slot:leftfootersection>
             <div>
                 <h4>Proyecto Final KeepCoding</h4>
-                <h5><n>Padawanas</n></h5>
+                <h3><n>Padawanas</n></h3>
             </div>
         </template>
     </custom-footer>

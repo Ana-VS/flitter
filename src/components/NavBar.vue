@@ -124,7 +124,7 @@ a {
     font-weight: bolder;
 } */
 
-searchBox button {
+button {
     padding: 10px;
     background: #4a3aff;
     border: #4a3aff;

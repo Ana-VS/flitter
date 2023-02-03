@@ -61,6 +61,10 @@ export default defineComponent({
     justify-content: space-around;
     max-height: 120px;
     padding: 5px 0;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
 }
 
 .girls {
@@ -87,3 +91,4 @@ export default defineComponent({
     color: #ffffff;
 }
 </style>
+

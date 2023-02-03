@@ -1,12 +1,12 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
-import HomeView from "../views/HomeView.vue";
+import PublicView from "../views/PublicView.vue";
 
 const routes: Array<RouteRecordRaw> = [
     // PublicView
     {
         path: "/",
         name: "home",
-        component: HomeView,
+        component: PublicView,
     },
     {
         path: "/login",

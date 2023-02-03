@@ -1,8 +1,4 @@
 <template>
-    <nav>
-        <router-link to="/">Home</router-link> |
-        <router-link to="/about">About</router-link>
-    </nav>
     <router-view />
     <custom-footer>
         <template v-slot:leftfootersection>
@@ -30,13 +26,15 @@ p
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Arvo&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap');
 
 * {
     padding: 0;
     margin: 0;
 }
+
 #app {
-    font-family: Arvo;
+    font-family: Inter;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;

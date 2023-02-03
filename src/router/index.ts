@@ -12,25 +12,25 @@ const routes: Array<RouteRecordRaw> = [
         path: "/login",
         name: "login",
         component: () =>
-            import(/* webpackChunkName: "about" */ "../views/LoginView.vue"),
+            import(/* webpackChunkName: "about" */ "@/views/LoginView.vue"),
     },
     {
         path: "/privateView",
         name: "privateView",
         component: () =>
-            import(/* webpackChunkName: "about" */ "../views/PrivateView.vue"),
+            import(/* webpackChunkName: "about" */ "@/views/PrivateView.vue"),
     },
     {
         path: "/profile",
         name: "profile",
         component: () =>
-            import(/* webpackChunkName: "about" */ "../views/ProfileView.vue"),
+            import(/* webpackChunkName: "about" */ "@/views/ProfileView.vue"),
     },
     {
-        path: "/about",
-        name: "about",
+        path: "/createAccount",
+        name: "createAccount",
         component: () =>
-            import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
+            import(/* webpackChunkName: "about" */ "@/views/CreateAccount.vue"),
     },
     {
         path: "/:pathMatch(.*)",

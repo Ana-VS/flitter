@@ -19,7 +19,9 @@
         </div>
         <div class="flit-footer">
             <p>03/04/2021</p>
-            <p><img src="@/assets/imgs/liked.png" alt="Liked flit" /> 200</p>
+            <p class="kudos">
+                <img src="@/assets/imgs/liked.png" alt="Liked flit" /> 200
+            </p>
         </div>
     </div>
 </template>
@@ -80,6 +82,10 @@ export default defineComponent({
     font-size: 10pt;
 }
 
+.kudos {
+    color: #d7443e;
+    font-weight: bolder;
+}
 .flit-footer p img {
     height: 20px;
 }

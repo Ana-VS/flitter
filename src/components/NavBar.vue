@@ -1,17 +1,38 @@
 <template>
     <div class="navbar-component">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Flitter</a>
-            <form class="form-inline my-2 my-lg-0">
-                <input
-                    class="form-control mr-sm-2"
-                    type="search"
-                    placeholder="Search"
-                    aria-label="Search"
-                />
-            </form>
+            <ul>
+                <li>
+                    <router-link class="navbar-brand" :to="{ name: 'home' }"
+                        >Flitter</router-link
+                    >
+                </li>
+                <li class="searchBox">
+                    <form class="form-inline my-2 my-lg-0">
+                        <input
+                            class="form-control mr-sm-2"
+                            type="search"
+                            placeholder="Search"
+                            aria-label="Search"
+                        />
+                    </form>
+                </li>
+                <li>
+                    <button class="button-link login">
+                        <router-link :to="{ name: 'login' }"
+                            >Log In</router-link
+                        >
+                    </button>
+                    <button class="button-link createAccount">
+                        <router-link :to="{ name: 'createAccount' }"
+                            >Create Account</router-link
+                        >
+                    </button>
+                </li>
+            </ul>
+            <!-- <a href="#">Flitter</a> -->
 
-            <button
+            <!-- <button
                 class="navbar-toggler"
                 type="button"
                 data-toggle="collapse"
@@ -21,8 +42,7 @@
                 aria-label="Toggle navigation"
             >
                 <span class="navbar-toggler-icon"></span>
-            </button>
-
+            </button> -->
             <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
@@ -60,10 +80,56 @@ export default defineComponent({
 });
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-
 <style scoped>
 .navbar-component {
+    width: 100vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
     padding: 0 16px 0 16px;
+    width: 100vw;
+}
+.navbar-brand {
+    color: #4a3aff;
+    font-weight: bolder;
+    font-size: 22pt;
+    padding: 10px 20px;
+    width: 100%;
+}
+
+ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    list-style: none;
+    margin: 0px 10px;
+}
+li {
+    padding: 1rem;
+    font-weight: bold;
+    margin: 0px 10px;
+}
+a {
+    color: white;
+    text-decoration: none;
+    font-size: 10pt;
+    padding: 10px;
+    text-shadow: #454851 1px 1px 2px;
+    margin: 15px;
+}
+/* a:hover {
+    color: #454851;
+    font-weight: bolder;
+} */
+
+searchBox button {
+    padding: 10px;
+    background: #4a3aff;
+    border: #4a3aff;
+    border-radius: 20px;
+    margin: 0px 5px;
+    font-size: 10pt !important;
 }
 </style>

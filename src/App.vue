@@ -1,5 +1,6 @@
 <template>
     <router-view />
+    <FlitBox />
     <custom-footer>
         <template v-slot:leftfootersection>
             <div class="footer-text">
@@ -15,11 +16,13 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import CustomFooter from "@/components/CustomFooter.vue";
+import FlitBox from "@/components/flitBox.vue";
 
 export default defineComponent({
     name: "AppVue",
     components: {
         CustomFooter,
+        FlitBox,
     },
 });
 </script>

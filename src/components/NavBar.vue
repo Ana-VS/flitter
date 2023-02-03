@@ -1,16 +1,29 @@
 <template>
-  <div class="navbar-component">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Flitter</a>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      </form>
+    <div class="navbar-component">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Flitter</a>
+            <form class="form-inline my-2 my-lg-0">
+                <input
+                    class="form-control mr-sm-2"
+                    type="search"
+                    placeholder="Search"
+                    aria-label="Search"
+                />
+            </form>
 
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-  <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
@@ -35,24 +48,22 @@
     </ul>
 
   </div> -->
-    </nav>
-  </div>
-
+        </nav>
+    </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: 'NavBar',
- 
+    name: "NavBar",
 });
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 
 <style scoped>
-.navbar-component{
-  padding: 0 16px 0 16px;
+.navbar-component {
+    padding: 0 16px 0 16px;
 }
 </style>

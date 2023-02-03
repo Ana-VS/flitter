@@ -2,9 +2,11 @@
     <router-view />
     <custom-footer>
         <template v-slot:leftfootersection>
-            <div>
+            <div class="footer-text">
                 <h4>Proyecto Final KeepCoding</h4>
-                <h3><n>Padawanas</n></h3>
+                <h3>
+                    <n>By <i>Padawanas</i></n>
+                </h3>
             </div>
         </template>
     </custom-footer>
@@ -26,7 +28,7 @@ p
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Arvo&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap");
 
 * {
     padding: 0;
@@ -52,5 +54,12 @@ nav a {
 
 nav a.router-link-exact-active {
     color: #42b983;
+}
+
+.footer-text h4 {
+    font-size: 12pt;
+}
+.footer-text h3 {
+    font-size: 10pt;
 }
 </style>

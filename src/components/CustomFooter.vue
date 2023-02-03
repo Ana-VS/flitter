@@ -19,7 +19,7 @@
                 </div>
                 <div class="girls">
                     <a
-                        href="https://github.com/mangelesc"
+                        href="https://www.linkedin.com/in/mariaangelescordoba/"
                         target="_blank"
                         rel="noopener noreferrer"
                     >
@@ -59,7 +59,7 @@ export default defineComponent({
     display: flex;
     align-items: center;
     justify-content: space-around;
-    max-height: 120px;
+    max-height: 90px;
     padding: 5px 0;
     position: fixed;
     left: 0;
@@ -71,11 +71,11 @@ export default defineComponent({
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-width: 80px;
+    min-width: 50px;
 }
 
 .girls p {
-    font-size: 10pt;
+    font-size: 8pt;
 }
 
 .imgFooter {
@@ -84,11 +84,10 @@ export default defineComponent({
 }
 
 .RRSS {
-    margin: 0px 10px;
-    height: 2em;
+    margin: 0px 15px;
+    height: 1.2em;
 }
 .leftfootersection {
     color: #ffffff;
 }
 </style>
-

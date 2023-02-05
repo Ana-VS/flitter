@@ -24,9 +24,12 @@ export default defineComponent({
 });
 </script>
 <style scoped>
+.row {
+    margin: 0;
+}
 .row,
 b {
-    padding: 20px 20px 10px 20px;
+    padding: 20px 0px 10px 0px;
     display: flex !important;
     justify-content: center;
 }
@@ -38,7 +41,7 @@ b {
 }
 .btn {
     padding: 5px 5px;
-    background-color: #27244d;
+    background-color: #4a3aff;
     color: #454851;
     font-weight: bolder;
     text-shadow: #b39f9f 1px 1px 2px;
@@ -47,7 +50,7 @@ b {
     height: 25px;
 }
 .form-control {
-    width: 500px;
+    width: 300px;
     border-right: 0px;
 }
 .form-control:hover {

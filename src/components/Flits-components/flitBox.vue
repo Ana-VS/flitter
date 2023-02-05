@@ -1,32 +1,35 @@
 <template>
     <div class="flit-div">
         <div class="flit-author">
-            <h3>{{ flit.autor }}</h3>
+            <h3>{{ flit.createdBy.username }}</h3>
         </div>
         <div class="flit-img">
-            <img :src="{{ flit.imgSrc }}" alt="PicPrueba" />
+            <img :src="flit.picture" :alt="`{flit.createdBy.username}-flit`" />
         </div>
         <div class="flit-text">
-            {{ flit.text }}
+            {{ flit.message }}
         </div>
         <div class="flit-footer">
-            <p>{{ flit.date }}</p>
+            <p>{{ flit.createDate }}</p>
             <p class="kudos">
                 <img src="@/assets/imgs/liked.png" alt="Liked flit" />
-                {{ flit.numKudos }}
+                {{ flit.kudos }}
             </p>
         </div>
     </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import useFlits from "@/composables/useFlits";
+import { defineComponent, PropType } from "vue";
+import { Flit } from "@/models/flit";
 
 export default defineComponent({
     name: "FlitBox",
-    setup() {
-        const {} = useFlits();
+    props: {
+        flit: {
+            type: Object as PropType<Flit>,
+            required: true,
+        },
     },
 });
 </script>

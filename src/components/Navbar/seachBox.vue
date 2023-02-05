@@ -54,17 +54,23 @@ b {
     border-right: 0px;
 }
 .form-control:hover {
-    background-color: #f2f2f2;
+    background-color: #4a3affa1;
     border: solid 2px #f3f3f4;
     box-shadow: #27244d;
 }
 .form-control:focus {
-    background-color: white;
+    background-color: #4a3affa1;
     border: solid 1px #f3f3f4;
     box-shadow: 0 0 4px #27244d;
 }
 .btn:hover {
-    color: #ffffff;
+    color: #4a3affa1;
+    font-weight: bolder;
+    text-shadow: #454851 1px 1px 2px;
+}
+
+.btn a:hover {
+    color: #4a3affa1;
     font-weight: bolder;
     text-shadow: #454851 1px 1px 2px;
 }

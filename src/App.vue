@@ -37,10 +37,7 @@ p
 
 #app {
     font-family: Inter;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
     text-align: center;
-    color: #2c3e50;
 }
 
 nav {
@@ -49,11 +46,6 @@ nav {
 
 nav a {
     font-weight: bold;
-    color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-    color: #42b983;
 }
 
 .footer-text h4 {

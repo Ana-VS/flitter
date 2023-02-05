@@ -37,7 +37,7 @@ p
 
 #app {
     font-family: Inter;
-    text-align: center;
+    text-align: left;
 }
 
 nav {

@@ -5,14 +5,12 @@ const useUsers = () => {
     const store = useStore();
 
     return {
-        //propiedad computada que llama al getter
-
         // GETTERS
         isLoading: computed(() => store.getters["users/getIsLoading"]),
         user: computed(() => store.getters["users/getUser"]),
 
         // ACTIONS
-        fetchUserById: (userId: number) =>
+        fetchUserById: (userId: string) =>
             store.dispatch("users/fetchUserById", userId),
     };
 };

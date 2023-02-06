@@ -34,7 +34,7 @@
 
 <style scoped>
 .formArea {
-    padding: 0px 10px 40px 10px;
+    padding: 0px 0px 40px 0px;
     display: flex;
     flex-direction: column;
     align-items: center;

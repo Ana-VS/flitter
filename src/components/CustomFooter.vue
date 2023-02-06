@@ -59,9 +59,12 @@ export default defineComponent({
     display: flex;
     align-items: center;
     justify-content: space-around;
-    height: 100px;
-    padding: 15px 0 5px 0;
-    width: 100vw;
+    height: 80px;
+    padding: 10px 0 0px 0;
+    width: 100%;
+    position: sticky;
+    left: 0;
+    bottom: 0;
 }
 
 .girls {

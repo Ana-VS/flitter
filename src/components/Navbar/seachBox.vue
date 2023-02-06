@@ -24,9 +24,12 @@ export default defineComponent({
 });
 </script>
 <style scoped>
+.row {
+    margin: 0;
+}
 .row,
 b {
-    padding: 20px 20px 10px 20px;
+    padding: 20px 0px 10px 0px;
     display: flex !important;
     justify-content: center;
 }
@@ -38,30 +41,38 @@ b {
 }
 .btn {
     padding: 5px 5px;
-    background-color: #27244d;
+    background-color: #4a3aff;
     color: #454851;
     font-weight: bolder;
     text-shadow: #b39f9f 1px 1px 2px;
+}
+.btn:hover {
+    background-color: #4a3aff;
+    transform: scale(1.1);
 }
 .btn img {
     height: 25px;
 }
 .form-control {
-    width: 500px;
+    width: 300px;
     border-right: 0px;
 }
 .form-control:hover {
-    background-color: #f2f2f2;
     border: solid 2px #f3f3f4;
     box-shadow: #27244d;
 }
 .form-control:focus {
-    background-color: white;
     border: solid 1px #f3f3f4;
     box-shadow: 0 0 4px #27244d;
 }
 .btn:hover {
-    color: #ffffff;
+    color: #4a3affa1;
+    font-weight: bolder;
+    text-shadow: #454851 1px 1px 2px;
+}
+
+.btn a:hover {
+    color: #4a3affa1;
     font-weight: bolder;
     text-shadow: #454851 1px 1px 2px;
 }

@@ -1,23 +1,20 @@
 <template>
     <NavBar></NavBar>
-    <searchBox />
     <div class="home">
-        <FlitBox />
+        <FlitList />
     </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import NavBar from "@/components/NavBar.vue";
-import FlitBox from "@/components/flitBox.vue";
-import searchBox from "@/components/seachBox.vue";
+import NavBar from "@/components/Navbar/NavBarPublic.vue";
+import FlitList from "@/components/Flits-components/flitsList.vue";
 
 export default defineComponent({
     name: "PublicView",
     components: {
         NavBar,
-        FlitBox,
-        searchBox,
+        FlitList,
     },
 });
 </script>

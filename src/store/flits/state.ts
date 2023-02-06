@@ -1,16 +1,16 @@
-import { Flit } from "@/models/flits";
+import { Flit } from "@/models/flit";
 
 export interface IFlitState {
-    flits: Flit [];
+    flits: Flit[];
     isLoading: boolean;
     selectedFlit: Flit | null;
 }
 
-function state (): IFlitState {
+function state(): IFlitState {
     return {
         flits: [],
         isLoading: false,
         selectedFlit: null,
-    }
+    };
 }
 export default state;

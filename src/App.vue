@@ -31,16 +31,13 @@ p
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap");
 
 * {
-    padding: 0;
-    margin: 0;
+    padding: 0px;
+    margin: 0px;
 }
 
 #app {
     font-family: Inter;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
+    text-align: left;
 }
 
 nav {
@@ -49,11 +46,6 @@ nav {
 
 nav a {
     font-weight: bold;
-    color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-    color: #42b983;
 }
 
 .footer-text h4 {
@@ -61,5 +53,9 @@ nav a.router-link-exact-active {
 }
 .footer-text h3 {
     font-size: 10pt;
+}
+
+custom-footer {
+    margin: 0;
 }
 </style>

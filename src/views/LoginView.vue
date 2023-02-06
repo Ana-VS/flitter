@@ -1,5 +1,20 @@
 <template>
-    <div class="about">
-        <h1>Login</h1>
-    </div>
+    <NavBar></NavBar>
+    <login-form></login-form>
 </template>
+
+<script lang="ts">
+import { defineComponent } from "vue";
+import NavBar from "@/components/Navbar/NavBarPublic.vue";
+import loginForm from "@/components/Forms/loginForm.vue";
+
+export default defineComponent({
+    name: "LoginView",
+    components: {
+        NavBar,
+        loginForm,
+    },
+});
+</script>
+
+<style scoped></style>

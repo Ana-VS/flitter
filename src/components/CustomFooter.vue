@@ -25,7 +25,7 @@
                     >
                         <img class="RRSS" src="@/assets/imgs/linkedin.png" />
                     </a>
-                    <p>Mª Ángeles</p>
+                    <p>Ángeles</p>
                 </div>
                 <div class="girls">
                     <a href="" target="_blank" rel="noopener noreferrer">
@@ -59,12 +59,12 @@ export default defineComponent({
     display: flex;
     align-items: center;
     justify-content: space-around;
-    max-height: 90px;
-    padding: 5px 0;
-    position: fixed;
+    height: 80px;
+    padding: 10px 0 0px 0;
+    width: 100%;
+    position: sticky;
     left: 0;
     bottom: 0;
-    width: 100%;
 }
 
 .girls {
@@ -76,11 +76,14 @@ export default defineComponent({
 
 .girls p {
     font-size: 8pt;
+    text-align: center;
+    padding: 5px 5px;
 }
 
 .imgFooter {
     display: flex;
     justify-content: space-between;
+    padding: 0%;
 }
 
 .RRSS {

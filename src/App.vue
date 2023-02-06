@@ -31,8 +31,8 @@ p
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap");
 
 * {
-    padding: 0;
-    margin: 0;
+    padding: 0px;
+    margin: 0px;
 }
 
 #app {
@@ -53,5 +53,9 @@ nav a {
 }
 .footer-text h3 {
     font-size: 10pt;
+}
+
+custom-footer {
+    margin: 0;
 }
 </style>

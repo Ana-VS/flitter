@@ -1,6 +1,5 @@
 <template>
     <NavBar></NavBar>
-    <searchBox />
     <div class="home">
         <FlitList />
     </div>

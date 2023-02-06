@@ -95,7 +95,7 @@ a {
 }
 .btn:hover,
 #AppName:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
 }
 
 #AppName a {

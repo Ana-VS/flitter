@@ -98,11 +98,11 @@ a {
     color: white !important;
     padding: 10px;
     border-radius: 20px;
-    transform: scale(1.2) !important;
+    transform: scale(1.1) !important;
 }
 .btn:hover,
 #AppName:hover {
-    transform: scale(1.2) !important;
+    transform: scale(1.1) !important;
 }
 
 #AppName a {

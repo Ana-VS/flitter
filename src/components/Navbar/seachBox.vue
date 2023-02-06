@@ -46,6 +46,10 @@ b {
     font-weight: bolder;
     text-shadow: #b39f9f 1px 1px 2px;
 }
+.btn:hover {
+    background-color: #4a3aff;
+    transform: scale(1.1);
+}
 .btn img {
     height: 25px;
 }
@@ -54,12 +58,10 @@ b {
     border-right: 0px;
 }
 .form-control:hover {
-    background-color: #4a3affa1;
     border: solid 2px #f3f3f4;
     box-shadow: #27244d;
 }
 .form-control:focus {
-    background-color: #4a3affa1;
     border: solid 1px #f3f3f4;
     box-shadow: 0 0 4px #27244d;
 }

@@ -1,7 +1,7 @@
 <template>
     <div class="formArea">
         <div class="form">
-            <h2 class="formTittle">Log In</h2>
+            <h2 class="formTittle">Sign Up</h2>
             <form>
                 <div class="formSection">
                     <label for="">Email address</label>
@@ -13,17 +13,26 @@
                     />
                 </div>
                 <div class="formSection">
+                    <label for="">Username</label>
+                    <input
+                        type="text"
+                        placeholder="myUsername"
+                        pattern="^[a-zA-Z]*$"
+                        required
+                    />
+                </div>
+                <div class="formSection">
                     <label for="">Password</label>
                     <input type="password" placeholder="Password" required />
                 </div>
                 <div class="formSection">
-                    <input class="formBtn" type="submit" value="Sign In" />
+                    <input class="formBtn" type="submit" value="Sign Up" />
                 </div>
                 <div class="formSection">
                     <p>
-                        Not a member?
-                        <router-link :to="{ name: 'createAccount' }"
-                            >Create Account</router-link
+                        Are you already a member?
+                        <router-link :to="{ name: 'login' }"
+                            >Log In</router-link
                         >
                     </p>
                 </div>

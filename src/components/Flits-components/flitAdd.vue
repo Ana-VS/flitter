@@ -2,24 +2,33 @@
     <div class="AddFlit-box">
         <div class="FlitAdd-left">
             <img
-                src="@/assets/imgs/flittAdd.png"
+                src="@/assets/imgs/Socialmedia.jpg"
                 alt="Add Flit"
                 id="AddFlit-img"
             />
         </div>
         <form class="FlitAdd-right">
-            <textarea
-                class="form-control"
-                id="flitadd-textarea"
-                rows="1"
-                placeholder="What's happening?"
-            ></textarea>
+            <div class="FlitAdd-fields">
+                <label> <img src="@/assets/imgs/text.png" alt="Text" /></label>
+                <textarea
+                    class="form-control"
+                    id="flitadd-textarea"
+                    rows="1"
+                    maxlength="256"
+                    placeholder="What's happening?"
+                ></textarea>
+            </div>
 
-            <input
-                class="form-control flitadd-input"
-                type="url"
-                placeholder="Insert image url"
-            />
+            <div class="FlitAdd-fields">
+                <label>
+                    <img src="@/assets/imgs/image.png" alt="Image"
+                /></label>
+                <input
+                    class="form-control flitadd-input"
+                    type="url"
+                    placeholder="Insert image url"
+                />
+            </div>
 
             <input id="flitadd-btn" type="submit" value="Flit" />
         </form>
@@ -30,9 +39,9 @@
 .AddFlit-box {
     display: flex;
     flex-direction: row;
-    width: 50%;
+    width: 70%;
     background: white;
-    padding: 10px;
+    padding: 0px;
     border-radius: 20px;
 }
 .FlitAdd-left {
@@ -43,10 +52,17 @@
     width: 70%;
     display: flex;
     flex-direction: column;
+    padding: 10px;
 }
 
 #AddFlit-img {
-    height: 30px;
+    height: 200px;
+    width: 100%;
+    border-radius: 15px 0px 0px 15px;
+    object-fit: cover;
+}
+#AddFlit-img img {
+    object-fit: cover;
 }
 
 #flitadd-textarea {
@@ -59,6 +75,16 @@
     padding: 5px 15px;
     border-radius: 15px;
     margin: 10px 0px;
+}
+
+.FlitAdd-fields {
+    display: flex;
+    flex-direction: row;
+}
+
+.FlitAdd-fields img {
+    padding: 10px 10px 0px 10px;
+    height: 45px;
 }
 .form-control:focus {
     border: solid 1px #f3f3f4;

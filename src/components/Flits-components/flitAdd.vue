@@ -8,6 +8,7 @@
             />
         </div>
         <form class="FlitAdd-right">
+            <h2 id="gretting">Hey there, Username!</h2>
             <div class="FlitAdd-fields">
                 <label> <img src="@/assets/imgs/text.png" alt="Text" /></label>
                 <textarea
@@ -34,15 +35,32 @@
         </form>
     </div>
 </template>
+<script lang="ts">
+import { defineComponent, PropType } from "vue";
+// import { User } from "@/models/user";
+
+export default defineComponent({
+    name: "flitAdd",
+    // props: {
+    //     user: {
+    //         type: Object as PropType<User>,
+    //         required: true,
+    //     },
+    // },
+});
+</script>
 
 <style scoped>
 .AddFlit-box {
     display: flex;
     flex-direction: row;
+    align-content: center !important;
     width: 70%;
+    max-height: 190px;
     background: white;
     padding: 0px;
     border-radius: 20px;
+    margin: 0px 15% 0px 15%;
 }
 .FlitAdd-left {
     width: 30%;
@@ -52,29 +70,36 @@
     width: 70%;
     display: flex;
     flex-direction: column;
-    padding: 10px;
+    padding: 5px;
 }
 
+#gretting {
+    padding: 10px 0px 0px 15px;
+    font-size: 16pt;
+}
 #AddFlit-img {
-    height: 200px;
+    height: 100%;
     width: 100%;
     border-radius: 15px 0px 0px 15px;
     object-fit: cover;
 }
+
 #AddFlit-img img {
     object-fit: cover;
 }
 
 #flitadd-textarea {
-    padding: 15px;
+    padding: 10px;
     border-radius: 15px;
-    margin: 10px 0px;
+    margin: 3px 15px 3px 3px;
+    font-size: 10pt;
 }
 
 .flitadd-input {
-    padding: 5px 15px;
+    padding: 5px 10px;
     border-radius: 15px;
-    margin: 10px 0px;
+    margin: 3px 15px 3px 3px;
+    font-size: 10pt;
 }
 
 .FlitAdd-fields {
@@ -83,8 +108,8 @@
 }
 
 .FlitAdd-fields img {
-    padding: 10px 10px 0px 10px;
-    height: 45px;
+    padding: 5px 7px 0px 15px;
+    height: 30px;
 }
 .form-control:focus {
     border: solid 1px #f3f3f4;
@@ -93,15 +118,16 @@
 
 #flitadd-btn {
     background-color: #4a3aff;
-    padding: 10px;
+    padding: 7px;
     border-radius: 20px;
     border: #f2f2f2;
     color: #f2f2f2;
-    font-size: 14pt;
+    font-size: 12pt;
     font-weight: bold;
     text-shadow: #454851 1px 1px 2px;
     align-self: flex-end;
     width: 100px;
+    margin: 3px 15px 0px 3px;
 }
 #flitadd-btn:hover {
     transform: scale(1.1);

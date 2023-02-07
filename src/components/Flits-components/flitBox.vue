@@ -42,10 +42,10 @@ export default defineComponent({
     align-items: center;
     justify-content: center;
     background: #ffffff;
-    margin: 10px;
+    margin: 10px 35% 10px 35%;
     padding: 20px 10px 5px 10px;
     border-radius: 10px;
-    width: 430px;
+    width: 450px;
 }
 .flit-div div {
     width: 400px;

@@ -1,8 +1,10 @@
 <template>
     <NavBar></NavBar>
     <div class="home">
-        <FlitAdd />
-        <FlitList />
+        <div class="content">
+            <flitAdd />
+            <FlitList />
+        </div>
     </div>
 </template>
 
@@ -27,6 +29,12 @@ export default defineComponent({
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    align-content: center;
+    align-content: center !important;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 </style>

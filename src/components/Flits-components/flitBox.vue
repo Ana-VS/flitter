@@ -43,7 +43,7 @@ export default defineComponent({
     justify-content: center;
     background: #ffffff;
     margin: 10px;
-    margin: 10px;
+    padding: 20px 10px 5px 10px;
     border-radius: 10px;
     width: 430px;
 }

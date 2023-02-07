@@ -5,7 +5,7 @@
                 <input
                     type="text"
                     class="form-control"
-                    placeholder="Search for products"
+                    placeholder="Search for flits"
                     minlength="3"
                 />
             </div>

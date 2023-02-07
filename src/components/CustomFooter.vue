@@ -60,9 +60,9 @@ export default defineComponent({
     align-items: center;
     justify-content: space-around;
     height: 80px;
-    padding: 10px 0 0px 0;
+    padding: 10px 0px 0px 0px;
     width: 100%;
-    position: sticky;
+    position: static;
     left: 0;
     bottom: 0;
 }

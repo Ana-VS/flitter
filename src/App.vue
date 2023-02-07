@@ -38,6 +38,7 @@ p
 #app {
     font-family: Inter;
     text-align: left;
+    background: #f2f2f2;
 }
 
 nav {

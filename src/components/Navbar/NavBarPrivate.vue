@@ -3,7 +3,9 @@
         <div class="section" id="sectionLeft">
             <ul>
                 <li id="AppName">
-                    <router-link class="navbar-brand" :to="{ name: 'home' }"
+                    <router-link
+                        class="navbar-brand"
+                        :to="{ name: 'privateView' }"
                         >Flitter</router-link
                     >
                 </li>
@@ -17,7 +19,7 @@
                 <li>
                     <button class="btn">
                         <router-link :to="{ name: 'profile' }"
-                            >My Profile {{ user.username }}
+                            >My Profile ({{ user.username }})
                         </router-link
                         >
                     </button>
@@ -63,7 +65,9 @@ nav {
     padding: 10px;
     display: flex;
     justify-content: space-between !important;
-    padding: 15px 2% 5px 2%;
+    padding: 10px 3% 0px 3%;
+    margin-bottom: 10px;
+    background: white;
 }
 .section {
     width: 33%;

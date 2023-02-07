@@ -61,7 +61,9 @@ nav {
     padding: 10px;
     display: flex;
     justify-content: space-between !important;
-    padding: 15px 2% 5px 2%;
+    padding: 10px 3% 0px 3%;
+    margin-bottom: 10px;
+    background: white;
 }
 .section {
     width: 33%;

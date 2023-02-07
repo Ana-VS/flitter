@@ -2,11 +2,10 @@ import flitterApi from "@/api/flitterApi";
 import { Flit } from "@/models/flit";
 import { AxiosResponse } from "axios";
 import { ActionTree } from "vuex";
-import { IState } from "..";
 import { IFlitState } from "./state";
 import { searchFlits } from "@/models/IsearchFlit";
 
-const actions: ActionTree<IFlitState, IState> = {
+const actions: ActionTree<IFlitState, any> = {
     async fetchFlits({ commit }, search: searchFlits) {
         // uso un array para mandar la información para filtar en la petición http
         // usamos la mutación para poner isLoading = true

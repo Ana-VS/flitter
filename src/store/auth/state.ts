@@ -1,12 +1,12 @@
+import { User } from '../../models/user';
+
 export interface ILoginState {
-    token: string,
-    isLogged: boolean,
+    user: User | null,
 }
 
 function state(): ILoginState {
     return {
-        token: '',
-        isLogged: false,
+        user: null,
     }
 }
 

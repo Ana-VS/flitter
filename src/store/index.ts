@@ -1,19 +1,15 @@
-import { User } from "@/models/user";
 import { createStore } from "vuex";
 import flitsModule from "./flits";
+import authModule from "./auth";
 
-export interface IState {
-    authUser: User | null;
-}
 
 export default createStore({
-    state: {
-        authUser: null,
-    },
+    state: {},
     getters: {},
     mutations: {},
     actions: {},
     modules: {
         flits: flitsModule,
+        auth: authModule,
     },
 });

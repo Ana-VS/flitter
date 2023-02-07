@@ -7,8 +7,8 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import NavBar from "@/components/Navbar/NavBarPublic.vue";
 import FlitList from "@/components/Flits-components/flitsList.vue";
+import NavBar from "@/components/Navbar/NavBarMain.vue";
 
 export default defineComponent({
     name: "PublicView",

@@ -17,16 +17,15 @@
                 <li>
                     <button class="btn">
                         <router-link :to="{ name: 'profile' }"
-                            >My Profile</router-link
+                            >My Profile {{ user.username }}
+                        </router-link
                         >
                     </button>
                 </li>
                 <!-- <li @click="logOut"> -->
                 <li>
-                    <button class="btn">
-                        <router-link :to="{ name: 'login' }"
-                            >Log Out</router-link
-                        >
+                    <button class="btn" @click="logout">
+                        <router-link :to="{ name: 'login' }">Log Out</router-link>
                     </button>
                 </li>
             </ul>
@@ -37,6 +36,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import searchBox from "@/components/Navbar/seachBox.vue";
+import useAuth from "@/composables/useAuth";
 // import useAuth from "@/composables/useAuth";
 export default defineComponent({
     name: "PrivateNavbar",
@@ -44,11 +44,13 @@ export default defineComponent({
         searchBox,
     },
     setup() {
+        const { user, logout } = useAuth();
         const idUser = localStorage.getItem("idUser");
         // const { logOut } = useAuth();
         return {
-            // logOut,
+            logout,
             idUser,
+            user,
         };
     },
 });

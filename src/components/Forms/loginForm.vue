@@ -9,15 +9,23 @@
                         type="text"
                         placeholder="myemail@flitter.com"
                         pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
+                        v-model="email"
                         required
                     />
                 </div>
                 <div class="formSection">
                     <label for="">Password</label>
-                    <input type="password" placeholder="Password" required />
+                    <input type="password" placeholder="Password" required v-model="password"/>
                 </div>
+                
+                <div class="errorSection" v-if="errorMessage">
+                    {{ errorMessage }}
+                </div>
+
                 <div class="formSection">
-                    <input class="formBtn" type="submit" value="Sign In" />
+                    <button class="formBtn" @click="login">
+                        <router-link :to="{ name: 'home' }">Log In</router-link>
+                    </button>
                 </div>
                 <div class="formSection">
                     <p>
@@ -31,6 +39,37 @@
         </div>
     </div>
 </template>
+
+<script lang="ts">
+import { defineComponent, ref } from "vue";
+import useAuth from "../../composables/useAuth";
+
+export default defineComponent({
+    name: "AppVue",
+    setup() {
+        const email = ref("");
+        const password = ref("");
+        const isLoading = ref(false);
+        const errorMessage = ref("");
+
+        const { login } = useAuth();
+        
+        return {
+            email,
+            password,
+            errorMessage,
+            isLoading,
+            login: async () => {
+                isLoading.value = true;
+                errorMessage.value = "";
+                const success = await login(email.value, password.value)
+                if (!success) errorMessage.value = "Contraseña o mail invalidos."
+                isLoading.value = false;
+            }
+        };
+    }
+});
+</script>
 
 <style scoped>
 .formArea {
@@ -52,6 +91,13 @@
     font-size: 26pt;
     font-weight: 800;
     padding: 7px 7px 0px 7px;
+}
+
+.errorSection {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 15px;
+    color: red,
 }
 .formSection {
     display: flex;

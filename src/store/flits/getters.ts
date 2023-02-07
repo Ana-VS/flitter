@@ -1,8 +1,7 @@
 import { GetterTree } from "vuex";
-import { IState } from "..";
 import { IFlitState } from "./state";
 
-const getters: GetterTree <IFlitState, IState> = {
+const getters: GetterTree <IFlitState, any> = {
     getFlits (state) {
         return state.flits
     }, 

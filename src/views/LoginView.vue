@@ -5,7 +5,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import NavBar from "@/components/Navbar/NavBarPublic.vue";
+import NavBar from "@/components/Navbar/NavBarMain.vue";
 import loginForm from "@/components/Forms/loginForm.vue";
 
 export default defineComponent({

@@ -1,5 +1,10 @@
 <template>
-    <router-view />
+    <v-sheet v-if="isLoading">
+        LOADING...
+    </v-sheet>
+    <v-sheet v-else>
+        <router-view />
+    </v-sheet>
     <custom-footer>
         <template v-slot:leftfootersection>
             <div class="footer-text">
@@ -13,17 +18,37 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, onMounted, ref } from "vue";
 import CustomFooter from "@/components/CustomFooter.vue";
+import useAuth from "./composables/useAuth";
 
 export default defineComponent({
     name: "AppVue",
+    setup() {
+        const isLoading = ref(true);
+        const { user, verify } = useAuth();
+        
+        // Tratar de obtener al usuario logeado
+        const localVerify = async () => {
+            isLoading.value = true;
+            await verify();
+            isLoading.value = false;
+        }
+        onMounted(() => {
+            localVerify();
+        })
+
+        return {
+            isLoading,
+            user,
+        };
+    },
     components: {
         CustomFooter,
     },
 });
 </script>
-p
+
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Arvo&display=swap");

@@ -1,19 +1,19 @@
 <template>
     <div class="flit-div">
         <div class="flit-author">
-            <h3>{{ flit.createdBy.username }}</h3>
+            <h3>{{ flit.user.username }}</h3>
         </div>
-        <div class="flit-img">
-            <img :src="flit.picture" :alt="`{flit.createdBy.username}-flit`" />
+        <div class="flit-img" v-if="flit.imageUrl">
+            <img :src="flit.imageUrl" />
         </div>
-        <div class="flit-text">
-            {{ flit.message }}
+        <div class="flit-text" v-if="flit.text">
+            {{ flit.text }}
         </div>
         <div class="flit-footer">
-            <p>{{ flit.createDate }}</p>
+            <p>{{ flit.createdAt }}</p>
             <p class="kudos">
                 <img src="@/assets/imgs/liked.png" alt="Liked flit" />
-                {{ flit.kudos }}
+                {{ flit.kudosCount }}
             </p>
         </div>
     </div>

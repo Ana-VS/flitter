@@ -8,7 +8,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, onMounted } from "vue";
 import flitBox from "./flitBox.vue";
 import useFlits from "@/composables/useFlits";
 
@@ -18,7 +18,13 @@ export default defineComponent({
         flitBox,
     },
     setup() {
-        const { isLoading, flits } = useFlits();
+        const { isLoading, fetchFlits, flits } = useFlits();
+        
+        // Correr la llamada para cargar los flits ni bien el componente se monte
+        onMounted(() => {
+            fetchFlits({ skip: 0, limit: 10 });
+        })
+
         return {
             isLoading,
             flits,

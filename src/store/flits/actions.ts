@@ -13,16 +13,19 @@ const actions: ActionTree<IFlitState, IState> = {
         commit("setIsLoading", true);
 
         //???AÑADIR BÚSQUEDA POR PARÁMETROS SEGÚN API
-        // obtenemos los datos de manera asíncrona, array de usuarios
-        const { data } = await flitterApi.get<unknown, AxiosResponse<Flit[]>>(
-            `/products?offset=${search.pageMin}&limit=${search.pageMin}}`
+        let queryParams = `/tweets?skip=${search.skip}&limit=${search.limit}`;
+        if (search.userId) queryParams += `&userId=${search.userId}}`
+        if (search.text) queryParams += `&text=${search.text}}`
+        // obtenemos los datos de manera asíncrona, array de tweets
+        const { data } = await flitterApi.get<unknown, AxiosResponse<{ tweets: Flit[] }>>(
+            queryParams
         );
 
         // usamos la mutación para poner isLoading = false
         commit("setIsLoading", false);
 
-        // usamos la mutación para volcar los datos obtenidos en la variable del state products
-        commit("setFlits", data);
+        // usamos la mutación para volcar los datos obtenidos en la variable del state tweets
+        commit("setFlits", data.tweets);
     },
 };
 

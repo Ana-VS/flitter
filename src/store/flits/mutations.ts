@@ -9,8 +9,5 @@ const mutations: MutationTree<IFlitState> = {
     setIsLoading(state: IFlitState, value: boolean) {
         state.isLoading = value;
     },
-    setSelectedUser(state, flit: Flit) {
-        state.selectedFlit = flit;
-    },
 };
 export default mutations;

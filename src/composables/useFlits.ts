@@ -7,11 +7,10 @@ const useFlits = () => {
     return {
         //GETTERS
         flits: computed(() => store.getters["flits/getFlits"]),
-        isLoading: computed(() => store.getters["flits/getFlits"]),
-        slectedFlit: computed(() => store.getters["flits/getSelectedFlit"]),
+        isLoading: computed(() => store.getters["flits/isLoading"]),
 
         //MUTATIONS
-
+        
         //ACTIONS
         fetchFlits: (search: searchFlits) => {
             store.dispatch("flits/fetchFlits", search);

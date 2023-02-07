@@ -8,10 +8,7 @@ const getters: GetterTree <IFlitState, IState> = {
     }, 
     getIsLoading (state) {
         return state.isLoading
-    }, 
-    getSelectedFlit (state) {
-        return state.selectedFlit
-    }
+    },
 }
 
 export default getters

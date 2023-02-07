@@ -13,8 +13,4 @@ const flitsModule: Module<IFlitState, IState> = {
     actions,
 }
 
-
-    
-
-
 export default flitsModule;

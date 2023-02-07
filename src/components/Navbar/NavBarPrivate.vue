@@ -3,7 +3,9 @@
         <div class="section" id="sectionLeft">
             <ul>
                 <li id="AppName">
-                    <router-link class="navbar-brand" :to="{ name: 'home' }"
+                    <router-link
+                        class="navbar-brand"
+                        :to="{ name: 'privateView' }"
                         >Flitter</router-link
                     >
                 </li>
@@ -24,7 +26,7 @@
                 <!-- <li @click="logOut"> -->
                 <li>
                     <button class="btn">
-                        <router-link :to="{ name: 'login' }"
+                        <router-link :to="{ name: 'home' }"
                             >Log Out</router-link
                         >
                     </button>

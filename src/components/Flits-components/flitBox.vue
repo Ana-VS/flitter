@@ -3,18 +3,25 @@
         <div class="flit-author">
             <h3>{{ flit.user.username }}</h3>
         </div>
-        <div class="flit-img" v-if="flit.imageUrl">
-            <img :src="flit.imageUrl" />
-        </div>
-        <div class="flit-text" v-if="flit.text">
-            {{ flit.text }}
-        </div>
-        <div class="flit-footer">
-            <p>{{ flit.createdAt }}</p>
-            <p class="kudos">
-                <img src="@/assets/imgs/liked.png" alt="Liked flit" />
-                {{ flit.kudosCount }}
-            </p>
+        <div class="flit-content">
+            <div class="flit-img" v-if="flit.imageUrl != null">
+                <img :src="flit.imageUrl" />
+            </div>
+            <div class="flit-img" v-else>
+                <img src="@/assets/imgs/noPicture.jpg" alt="" />
+            </div>
+            <div class="flit-content-right">
+                <div class="flit-text" v-if="flit.text">
+                    {{ flit.text }}
+                </div>
+                <div class="flit-footer">
+                    <p>{{ flit.createdAt }}</p>
+                    <p class="kudos">
+                        <img src="@/assets/imgs/liked.png" alt="Liked flit" />
+                        {{ flit.kudosCount }}
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -42,10 +49,10 @@ export default defineComponent({
     align-items: center;
     justify-content: center;
     background: #ffffff;
-    margin: 10px 35% 10px 35%;
+    margin: 10px 10% 10px 10%;
     padding: 20px 10px 5px 10px;
     border-radius: 10px;
-    width: 450px;
+    width: 80%px;
 }
 .flit-div div {
     width: 400px;
@@ -88,5 +95,54 @@ export default defineComponent({
 }
 .flit-footer p img {
     height: 20px;
+}
+
+@media screen and (min-width: 992px) {
+    .flit-div {
+        margin: 10px 15% 10px 15%;
+        padding: 0;
+        width: 70%;
+    }
+    .flit-content {
+        display: flex;
+        flex-direction: row;
+    }
+    .flit-div div {
+        width: 100%;
+    }
+    .flit-author h3 {
+        text-align: left;
+        font-weight: bolder;
+        padding: 15px 20px 0px 25px;
+        font-size: 14pt;
+    }
+
+    .flit-img {
+        padding: 5px 15px 10px 15px;
+        width: 50%;
+    }
+    .flit-img img {
+        object-fit: cover;
+        padding: 3px 0px;
+        max-height: 250px;
+        width: 100%;
+        border-radius: 7pt;
+    }
+    .flit-text {
+        padding: 15px 10px;
+        font-size: 10pt;
+        text-align: justify;
+    }
+    .flit-footer {
+        padding: 20px 30px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+    }
+    .flit-content-right {
+        padding: 0px;
+        display: flex;
+        justify-content: center;
+    }
 }
 </style>

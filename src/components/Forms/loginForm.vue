@@ -24,7 +24,7 @@
 
                 <div class="formSection">
                     <button class="formBtn" @click="login">
-                        <router-link :to="{ name: 'home' }">Log In</router-link>
+                        Log In
                     </button>
                 </div>
                 <div class="formSection">
@@ -42,11 +42,14 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
+import { useRouter } from "vue-router";
 import useAuth from "../../composables/useAuth";
 
 export default defineComponent({
     name: "AppVue",
     setup() {
+        const router = useRouter();
+    
         const email = ref("");
         const password = ref("");
         const isLoading = ref(false);
@@ -64,6 +67,8 @@ export default defineComponent({
                 errorMessage.value = "";
                 const success = await login(email.value, password.value)
                 if (!success) errorMessage.value = "Contraseña o mail invalidos."
+                else router.push({ path: '/' });
+
                 isLoading.value = false;
             }
         };

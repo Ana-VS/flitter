@@ -8,7 +8,7 @@
             />
         </div>
         <form class="FlitAdd-right">
-            <h2 id="gretting">Hey there, Username!</h2>
+            <h2 id="gretting">Hey there, {{ user.username }}</h2>
             <div class="FlitAdd-fields">
                 <label> <img src="@/assets/imgs/text.png" alt="Text" /></label>
                 <textarea
@@ -36,7 +36,8 @@
     </div>
 </template>
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
+import useAuth from "@/composables/useAuth";
+import { defineComponent } from "vue";
 // import { User } from "@/models/user";
 
 export default defineComponent({
@@ -47,6 +48,10 @@ export default defineComponent({
     //         required: true,
     //     },
     // },
+    setup() {
+        const {user} = useAuth();
+        return {user}
+    }
 });
 </script>
 

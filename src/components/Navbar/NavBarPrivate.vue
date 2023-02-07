@@ -19,7 +19,7 @@
                 <li>
                     <button class="btn">
                         <router-link :to="{ name: 'profile' }"
-                            >My Profile ({{ user.username }})
+                            >My Profile
                         </router-link
                         >
                     </button>

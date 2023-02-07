@@ -2,7 +2,7 @@
     <NavBar></NavBar>
     <div class="home">
         <div class="content">
-            <flitAdd />
+            <FlitAdd />
             <FlitList />
         </div>
     </div>

@@ -23,7 +23,7 @@
                 </div>
 
                 <div class="formSection">
-                    <button class="formBtn" @click="login">
+                    <button class="formBtn" @click.prevent="login">
                         Log In
                     </button>
                 </div>
@@ -66,8 +66,9 @@ export default defineComponent({
                 isLoading.value = true;
                 errorMessage.value = "";
                 const success = await login(email.value, password.value)
+                
                 if (!success) errorMessage.value = "Contraseña o mail invalidos."
-                else router.push({ path: '/' });
+                else router.push({ path: '/privateView' });
 
                 isLoading.value = false;
             }

@@ -6,7 +6,6 @@
                     type="text"
                     class="form-control"
                     placeholder="Search for flits"
-                    minlength="3"
                 />
             </div>
             <div class="col-auto">

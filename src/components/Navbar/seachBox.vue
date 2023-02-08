@@ -3,13 +3,14 @@
         <form class="row">
             <div class="col-auto">
                 <input
+                    v-model="searchTerm"
                     type="text"
                     class="form-control"
                     placeholder="Search for flits"
                 />
             </div>
             <div class="col-auto">
-                <button type="submit" class="btn mb-3">
+                <button type="submit" class="btn mb-3" @click.prevent="search">
                     <img src="@/assets/imgs/search.png" alt="Seach" />
                 </button>
             </div>
@@ -17,9 +18,20 @@
     </div>
 </template>
 <script lang="ts">
-import { defineComponent } from "vue";
+import useFlits from "@/composables/useFlits";
+import { defineComponent, ref } from "vue";
+
 export default defineComponent({
     name: "searchBox",
+    setup() {
+        const searchTerm = ref("");
+        const { fetchFlits } = useFlits();
+
+        return {
+            searchTerm,
+            search: () => fetchFlits({ text: searchTerm.value }),
+        }
+    }
 });
 </script>
 <style scoped>

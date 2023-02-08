@@ -12,9 +12,18 @@ const actions: ActionTree<IFlitState, any> = {
         commit("setIsLoading", true);
 
         //???AÑADIR BÚSQUEDA POR PARÁMETROS SEGÚN API
-        let queryParams = `/tweets?skip=${search.skip}&limit=${search.limit}`;
-        if (search.userId) queryParams += `&userId=${search.userId}}`
-        if (search.text) queryParams += `&text=${search.text}}`
+
+        let queryParams = `/tweets`;
+        const params = [];
+        if (search.limit) params.push(`limit=${search.limit}`);
+        if (search.skip) params.push(`skip=${search.skip}`);
+        if (search.userId) params.push(`userId=${search.userId}`);
+        if (search.text) params.push(`text=${search.text}`);
+
+        if (params) {
+            queryParams += `?${params.join("&")}`;
+        }
+
         // obtenemos los datos de manera asíncrona, array de tweets
         const { data } = await flitterApi.get<unknown, AxiosResponse<{ tweets: Flit[] }>>(
             queryParams

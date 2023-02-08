@@ -9,5 +9,17 @@ const mutations: MutationTree<IFlitState> = {
     setIsLoading(state: IFlitState, value: boolean) {
         state.isLoading = value;
     },
+    addFlit(state: IFlitState, newFlit: Flit) {
+        state.flits = [newFlit, ...state.flits];
+    },
+    deleteFlit(state: IFlitState, id: string) {
+        state.flits = state.flits.filter((f) => f._id !== id);
+    },
+    updateFlit(state: IFlitState, updatedFlit: Flit) {
+        state.flits = state.flits.map((flit) => {
+            if (flit._id == updatedFlit._id) return updatedFlit;
+            return flit;
+        })
+    },
 };
 export default mutations;

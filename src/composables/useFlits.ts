@@ -8,13 +8,12 @@ const useFlits = () => {
         //GETTERS
         flits: computed(() => store.getters["flits/getFlits"]),
         isLoading: computed(() => store.getters["flits/isLoading"]),
-
-        //MUTATIONS
         
         //ACTIONS
-        fetchFlits: (search: searchFlits) => {
-            store.dispatch("flits/fetchFlits", search);
-        },
+        fetchFlits: (search: searchFlits) => store.dispatch("flits/fetchFlits", search),
+        addFlit: (text: string, imageUrl: string) => store.dispatch("flits/addFlit", { text, imageUrl }),
+        deleteFlit: (id: string) => store.dispatch("flits/deleteFlit", id),
+        toggleKudo: (id: string) => store.dispatch("flits/toggleKudo", id),
     };
 };
 export default useFlits;

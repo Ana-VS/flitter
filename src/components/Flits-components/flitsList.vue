@@ -18,8 +18,7 @@ export default defineComponent({
         flitBox,
     },
     setup() {
-        const { isLoading, fetchFlits, flits } = useFlits();
-        
+        const { isLoading, fetchFlits, flits } = useFlits();        
         // Correr la llamada para cargar los flits ni bien el componente se monte
         onMounted(() => {
             fetchFlits({ skip: 0, limit: 10 });

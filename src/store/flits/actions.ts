@@ -26,6 +26,46 @@ const actions: ActionTree<IFlitState, any> = {
         // usamos la mutación para volcar los datos obtenidos en la variable del state tweets
         commit("setFlits", data.tweets);
     },
+    async addFlit({ commit }, newFlit: { text?: string, imageUrl?: string }) {
+        try {
+            const { data } = await flitterApi.post<unknown, AxiosResponse<{ tweet: Flit }>>(
+                '/tweets',
+                { tweet: newFlit },
+            );
+            // usamos la mutacion para agregar el flit
+            commit("addFlit", data.tweet);
+        } catch {
+            // Retornamos falso si no lo pudimos crear (Esto quiere decir que no pusimos los fields requeridos)
+            return false;
+        }
+        return true;
+    },
+    async deleteFlit({ commit }, id: string ) {
+        try {
+            await flitterApi.delete<unknown, AxiosResponse>(
+                `/tweets/${id}`,
+            );
+            //  usamos la mutacion para quitar el flit
+            commit("deleteFlit", id);
+        } catch {
+            // Retornamos falso si no lo pudimos crear (Esto quiere decir que no pusimos los fields requeridos)
+            return false;
+        }
+        return true;
+    },
+    async toggleKudo({ commit }, id: string ) {
+        try {
+            const { data } = await flitterApi.post<unknown, AxiosResponse<{ tweet: Flit }>>(
+                `/tweets/kudo-toggle/${id}`,
+            );
+            //  usamos la mutacion para quitar el flit
+            commit("updateFlit", data.tweet);
+        } catch {
+            // Retornamos falso si no lo pudimos crear (Esto quiere decir que no pusimos los fields requeridos)
+            return false;
+        }
+        return true;
+    },
 };
 
 export default actions;

@@ -1,24 +1,18 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
-import PublicView from "../views/PublicView.vue";
+import FlitsView from "@/views/FlitsView.vue";
 
 const routes: Array<RouteRecordRaw> = [
-    // PublicView
+    // FlitsView
     {
         path: "/",
         name: "home",
-        component: PublicView,
+        component: FlitsView,
     },
     {
         path: "/login",
         name: "login",
         component: () =>
             import(/* webpackChunkName: "about" */ "@/views/LoginView.vue"),
-    },
-    {
-        path: "/privateView",
-        name: "privateView",
-        component: () =>
-            import(/* webpackChunkName: "about" */ "@/views/PrivateView.vue"),
     },
     {
         path: "/profile",

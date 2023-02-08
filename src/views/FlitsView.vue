@@ -2,7 +2,7 @@
     <NavBar></NavBar>
     <div class="home">
         <div class="content">
-            <FlitAdd />
+            <FlitAdd v-if="user"/>
             <FlitList />
         </div>
     </div>
@@ -13,14 +13,19 @@ import { defineComponent } from "vue";
 import NavBar from "@/components/Navbar/NavBarPrivate.vue";
 import FlitAdd from "@/components/Flits-components/flitAdd.vue";
 import FlitList from "@/components/Flits-components/flitsList.vue";
+import useAuth from "@/composables/useAuth";
 
 export default defineComponent({
-    name: "PublicView",
+    name: "FlitsView",
     components: {
         NavBar,
         FlitAdd,
         FlitList,
     },
+    setup() {
+        const { user } = useAuth();
+        return { user }
+    }
 });
 </script>
 

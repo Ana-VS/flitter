@@ -5,7 +5,7 @@
                 <li id="AppName">
                     <router-link
                         class="navbar-brand"
-                        :to="{ name: 'privateView' }"
+                        :to="{ name: 'home' }"
                         >Flitter</router-link
                     >
                 </li>

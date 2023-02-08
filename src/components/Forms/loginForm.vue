@@ -68,7 +68,7 @@ export default defineComponent({
                 const success = await login(email.value, password.value)
                 
                 if (!success) errorMessage.value = "Contraseña o mail invalidos."
-                else router.push({ path: '/privateView' });
+                else router.push({ path: '/' });
 
                 isLoading.value = false;
             }

@@ -12,6 +12,7 @@
             <div class="FlitAdd-fields">
                 <label> <img src="@/assets/imgs/text.png" alt="Text" /></label>
                 <textarea
+                    v-model="text"
                     class="form-control"
                     id="flitadd-textarea"
                     rows="1"
@@ -25,32 +26,42 @@
                     <img src="@/assets/imgs/image.png" alt="Image"
                 /></label>
                 <input
+                    v-model="imageUrl"
                     class="form-control flitadd-input"
                     type="url"
                     placeholder="Insert image url"
                 />
             </div>
 
-            <input id="flitadd-btn" type="submit" value="Flit" />
+            <input id="flitadd-btn" type="submit" value="Flit" @click.prevent="add" :disabled="!text && !imageUrl"/>
         </form>
     </div>
 </template>
 <script lang="ts">
 import useAuth from "@/composables/useAuth";
-import { defineComponent } from "vue";
+import useFlits from "@/composables/useFlits";
+import { defineComponent, ref } from "vue";
 // import { User } from "@/models/user";
 
 export default defineComponent({
     name: "flitAdd",
-    // props: {
-    //     user: {
-    //         type: Object as PropType<User>,
-    //         required: true,
-    //     },
-    // },
     setup() {
+        const text = ref("");
+        const imageUrl = ref("");
+
         const {user} = useAuth();
-        return {user}
+        const { addFlit } = useFlits();
+        
+        return {
+            user,
+            add: () => {
+                addFlit(text.value, imageUrl.value);
+                imageUrl.value = "";
+                text.value = "";
+            },
+            text, 
+            imageUrl,
+        }
     }
 });
 </script>
@@ -134,7 +145,12 @@ export default defineComponent({
     width: 100px;
     margin: 3px 15px 0px 3px;
 }
-#flitadd-btn:hover {
+
+#flitadd-btn:disabled {
+    background-color: grey;
+}
+
+#flitadd-btn:hover:enabled {
     transform: scale(1.1);
 }
 </style>

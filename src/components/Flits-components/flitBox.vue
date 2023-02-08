@@ -2,18 +2,32 @@
     <div class="flit-div">
         <div class="flit-author">
             <h3>{{ flit.user.username }}</h3>
-            <button
-                class="btn-info"
-                id="flitDetail"
-                data-bs-toggle="modal"
-                data-bs-target="#flitModal"
-            >
-                <img src="@/assets/imgs/detail.png" alt="Flit Detail" />
-            </button>
+            <div>
+                <button
+                    class="btn-info"
+                    id="flitDetail"
+                    data-bs-toggle="modal"
+                    data-bs-target="#flitModal"
+                >
+                    <img src="@/assets/imgs/detail.png" alt="Flit Detail" />
+                </button>
+
+                <button
+                    v-if="user._id == flit.userId"
+                    class="btn-info"
+                    id="flitDelete"
+                    @click="deleteF"
+                >
+                    <img src="@/assets/imgs/delete.png" alt="Delete Flit" />
+                </button>
+            </div>
         </div>
         <div class="flit-content">
-            <div class="flit-img" v-if="flit.imageUrl != null">
-                <img :src="flit.imageUrl" />
+            <div class="flit-img" v-if="flit.imageUrl">
+                <img 
+                    :src="flit.imageUrl" 
+                    alt="Imagen no encontrada."
+                />
             </div>
             <div class="flit-img" v-else>
                 <img src="@/assets/imgs/noPicture.jpg" alt="" />
@@ -24,7 +38,7 @@
                 </div>
                 <div class="flit-footer">
                     <p>{{ flit.createdAt }}</p>
-                    <p class="kudos">
+                    <p class="kudos" @click.prevent="kudo">
                         <img src="@/assets/imgs/liked.png" alt="Liked flit" />
                         {{ flit.kudosCount }}
                     </p>
@@ -73,6 +87,8 @@
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
 import { Flit } from "@/models/flit";
+import useFlits from "@/composables/useFlits";
+import useAuth from "@/composables/useAuth";
 
 export default defineComponent({
     name: "FlitBox",
@@ -82,6 +98,16 @@ export default defineComponent({
             required: true,
         },
     },
+    setup(props) {
+        const { user } = useAuth();
+        const { deleteFlit, toggleKudo } = useFlits();
+
+        return {
+            deleteF: () => deleteFlit(props.flit._id),
+            kudo: () => toggleKudo(props.flit._id),
+            user,
+        }
+    }
 });
 </script>
 
@@ -109,7 +135,8 @@ export default defineComponent({
 }
 
 .btn-info {
-    margin: 0px 30px;
+    float: right;
+    margin: 0px 10px;
     background: white;
     border: 0px;
 }
@@ -156,6 +183,7 @@ export default defineComponent({
 .kudos {
     color: #d7443e;
     font-weight: bolder;
+    cursor: pointer;
 }
 .flit-footer p img {
     height: 20px;

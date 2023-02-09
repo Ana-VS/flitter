@@ -10,6 +10,7 @@
                         placeholder="myemail@flitter.com"
                         pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
                         required
+                        v-model="email"
                     />
                 </div>
                 <div class="formSection">
@@ -19,14 +20,16 @@
                         placeholder="myUsername"
                         pattern="^[a-zA-Z]*$"
                         required
+                        v-model="username"
                     />
                 </div>
                 <div class="formSection">
                     <label for="">Password</label>
-                    <input type="password" placeholder="Password" required />
+                    <input type="password" placeholder="Password" required v-model="password"/>
                 </div>
+                
                 <div class="formSection">
-                    <input class="formBtn" type="submit" value="Sign Up" />
+                    <input class="formBtn" type="submit" value="Sign Up" @submit.prevent="signUp"/>
                 </div>
                 <div class="formSection">
                     <p>
@@ -40,6 +43,40 @@
         </div>
     </div>
 </template>
+
+<script lang="ts">
+import useAuth from '@/composables/useAuth'
+
+import { defineComponent, ref } from 'vue'
+import { useRouter } from 'vue-router';
+
+
+export default defineComponent({
+    name: 'signUpForm',
+    setup() {
+        const router = useRouter();
+
+        const email= ref("");
+        const username = ref("");
+        
+        const password = ref("");
+
+        const { signUp } = useAuth()
+        return {
+            email,
+            username,
+            password,
+            signUp: async () => {
+                await signUp (email.value, password.value, username.value),
+                router.push('/')
+            }
+            
+            } 
+        }
+    
+})
+</script>
+
 
 <style scoped>
 .formArea {

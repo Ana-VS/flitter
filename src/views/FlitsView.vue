@@ -2,7 +2,7 @@
     <NavBar></NavBar>
     <div class="home">
         <div class="content">
-            <FlitAdd v-if="user"/>
+            <FlitAdd v-if="user" />
             <FlitList />
         </div>
     </div>
@@ -24,8 +24,8 @@ export default defineComponent({
     },
     setup() {
         const { user } = useAuth();
-        return { user }
-    }
+        return { user };
+    },
 });
 </script>
 

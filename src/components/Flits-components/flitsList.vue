@@ -6,14 +6,13 @@
         </div>
         <div class="loadMore-section">
             <p class="loadMore-info">Showing {{ Loadlimit }} flits</p>
-            <button
-                type="submit"
-                class="loadMore-btn"
-                @click.prevent="loadMore"
-            >
+            <button class="loadMore-btn" @click.prevent="loadMore">
                 Load more flits
             </button>
         </div>
+        <button class="btn" id="btnScrollUp" @click.prevent="scrollUp">
+            <img id="btnScrollUp-img" src="@/assets/imgs/scrollUp.png" alt="" />
+        </button>
     </div>
 </template>
 
@@ -34,6 +33,10 @@ export default defineComponent({
             Loadlimit.value += 10;
             fetchFlits({ skip: 0, limit: Loadlimit.value });
         };
+        const scrollUp = () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        };
+
         const { isLoading, fetchFlits, flits } = useFlits();
         // Correr la llamada para cargar los flits ni bien el componente se monte
         onMounted(() => {
@@ -45,6 +48,7 @@ export default defineComponent({
             flits,
             loadMore,
             Loadlimit,
+            scrollUp,
         };
     },
 });
@@ -73,7 +77,21 @@ export default defineComponent({
 }
 
 .loadMore-btn:hover {
-    background-color: #4a3aff;
     transform: scale(1.1);
+}
+
+#btnScrollUp {
+    color: white;
+    position: fixed;
+    bottom: 20px;
+    right: 25px;
+}
+
+#btnScrollUp:hover {
+    color: white;
+    transform: scale(1.1);
+}
+#btnScrollUp-img {
+    height: 45px;
 }
 </style>

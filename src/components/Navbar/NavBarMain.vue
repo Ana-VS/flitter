@@ -12,7 +12,9 @@ import useAuth from "@/composables/useAuth";
 export default defineComponent({
     name: "LoginView",
     setup() {
-        const {user} = useAuth();
+        const { user } = useAuth();
+
+        console.log("aca? ", user.value);
         return { user }
     },
     components: {

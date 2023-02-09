@@ -36,14 +36,6 @@ import { defineComponent } from "vue";
 // import useAuth from "@/composables/useAuth";
 export default defineComponent({
     name: "PrivateNavbar",
-    setup() {
-        const idUser = localStorage.getItem("idUser");
-        // const { logOut } = useAuth();
-        return {
-            // logOut,
-            idUser,
-        };
-    },
 });
 </script>
 

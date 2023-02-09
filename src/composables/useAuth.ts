@@ -7,7 +7,7 @@ const useUsers = () => {
 
     return {
         // GETTERS
-        user: computed(() => store.getters["auth/getUser"]) as ComputedRef<User>,
+        user: computed(() => store.getters["auth/getUser"]) as ComputedRef<User | null>,
 
         // ACTIONS
         login: (email: string, password: string) => store.dispatch("auth/login", { email, password }),

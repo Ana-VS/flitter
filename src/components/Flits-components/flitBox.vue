@@ -13,7 +13,7 @@
                 </button>
 
                 <button
-                    v-if="user._id == flit.userId"
+                    v-if="user?._id == flit.userId"
                     class="btn-info"
                     id="flitDelete"
                     @click="deleteF"

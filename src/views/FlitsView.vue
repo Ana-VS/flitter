@@ -10,7 +10,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import NavBar from "@/components/Navbar/NavBarPrivate.vue";
+import NavBar from "@/components/Navbar/NavBarMain.vue";
 import FlitAdd from "@/components/Flits-components/flitAdd.vue";
 import FlitList from "@/components/Flits-components/flitsList.vue";
 import useAuth from "@/composables/useAuth";

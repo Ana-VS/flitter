@@ -7,7 +7,7 @@
                     class="btn-info"
                     id="flitDetail"
                     data-bs-toggle="modal"
-                    data-bs-target="#flitModal"
+                    :data-bs-target="modalId"
                 >
                     <img src="@/assets/imgs/detail.png" alt="Flit Detail" />
                 </button>
@@ -24,10 +24,7 @@
         </div>
         <div class="flit-content">
             <div class="flit-img" v-if="flit.imageUrl">
-                <img 
-                    :src="flit.imageUrl" 
-                    alt="Imagen no encontrada."
-                />
+                <img :src="flit.imageUrl" alt="Imagen no encontrada." />
             </div>
             <div class="flit-img" v-else>
                 <img src="@/assets/imgs/noPicture.jpg" alt="" />
@@ -49,7 +46,7 @@
     <!-- Ventana modal detalle flit -->
     <div
         class="modal fade modal-box"
-        id="flitModal"
+        :id="flit._id"
         tabindex="-1"
         aria-hidden="true"
     >
@@ -85,7 +82,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
+import { defineComponent, PropType, ref } from "vue";
 import { Flit } from "@/models/flit";
 import useFlits from "@/composables/useFlits";
 import useAuth from "@/composables/useAuth";
@@ -101,13 +98,15 @@ export default defineComponent({
     setup(props) {
         const { user } = useAuth();
         const { deleteFlit, toggleKudo } = useFlits();
+        const modalId = ref("#" + props.flit._id);
 
         return {
             deleteF: () => deleteFlit(props.flit._id),
             kudo: () => toggleKudo(props.flit._id),
             user,
-        }
-    }
+            modalId,
+        };
+    },
 });
 </script>
 

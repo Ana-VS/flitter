@@ -81,7 +81,7 @@
                         <p class="userProf-td-tittle">
                             <b>Delete my Account</b>
                         </p>
-                        <p>No longer want to part of Flitter?</p>
+                        <p>No longer want to part be of Flitter?</p>
                     </td>
                     <td class="userProf-td-btn">
                         <button class="btn btn-delete">Delete</button>

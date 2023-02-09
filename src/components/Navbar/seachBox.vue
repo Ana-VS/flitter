@@ -1,7 +1,7 @@
 <template>
     <div class="hello">
-        <form class="row">
-            <div class="col-auto">
+        <form class="seach">
+            <div>
                 <input
                     v-model="searchTerm"
                     type="text"
@@ -9,7 +9,7 @@
                     placeholder="Search for flits"
                 />
             </div>
-            <div class="col-auto">
+            <div>
                 <button type="submit" class="btn mb-3" @click.prevent="search">
                     <img src="@/assets/imgs/search.png" alt="Seach" />
                 </button>
@@ -30,28 +30,26 @@ export default defineComponent({
         return {
             searchTerm,
             search: () => fetchFlits({ text: searchTerm.value }),
-        }
-    }
+        };
+    },
 });
 </script>
 <style scoped>
-.row {
-    margin: 0;
-}
-.row,
-b {
-    padding: 20px 0px 10px 0px;
-    display: flex !important;
-    justify-content: center;
-}
-
 .hello {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
+
+.seach {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
 .btn {
     padding: 5px 5px;
+    border-radius: 0px 5px 5px 0px;
     background-color: #4a3aff;
     color: #454851;
     font-weight: bolder;
@@ -67,6 +65,7 @@ b {
 .form-control {
     width: 300px;
     border-right: 0px;
+    border-radius: 5px 0px 0px 5px;
 }
 .form-control:hover {
     border: solid 2px #f3f3f4;

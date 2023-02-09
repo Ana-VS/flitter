@@ -42,8 +42,8 @@ export default defineComponent({
 <style scoped>
 nav {
     min-height: 50px;
-    max-height: 130px;
-    padding: 10px;
+    max-height: 90px;
+    padding: 7px;
     display: flex;
     justify-content: space-between !important;
     padding: 10px 3% 0px 3%;
@@ -61,13 +61,13 @@ ul {
     list-style: none;
 }
 li {
-    padding: 1rem;
+    padding: 1px 10px 1px 10px;
     font-weight: bold;
 }
 a {
     color: white !important;
     text-decoration: none;
-    font-size: 14pt;
+    font-size: 12pt;
     padding: 10px;
     text-shadow: #454851 1px 1px 2px;
 }
@@ -93,7 +93,7 @@ a {
 }
 
 #AppName a {
-    font-size: 30pt;
+    font-size: 28pt;
     padding: 20p;
 }
 

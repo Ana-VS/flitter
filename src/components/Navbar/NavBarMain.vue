@@ -1,5 +1,5 @@
 <template>
-    <NavBarPrivate v-if="user"/>
+    <NavBarPrivate v-if="user" />
     <NavBarPublic v-else />
 </template>
 
@@ -13,9 +13,7 @@ export default defineComponent({
     name: "LoginView",
     setup() {
         const { user } = useAuth();
-
-        console.log("aca? ", user.value);
-        return { user }
+        return { user };
     },
     components: {
         NavBarPublic,

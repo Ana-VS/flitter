@@ -24,7 +24,7 @@
                 </tr>
                 <tr class="userProf-tr">
                     <td class="userProf-td-img">
-                        <img src="@/assets/imgs/email.png" alt="Username" />
+                        <img src="@/assets/imgs/email.png" alt="Email" />
                     </td>
                     <td class="userProf-td-info">
                         <p class="userProf-td-tittle"><b>Email</b></p>
@@ -36,7 +36,7 @@
                 </tr>
                 <tr class="userProf-tr">
                     <td class="userProf-td-img">
-                        <img src="@/assets/imgs/password.png" alt="Username" />
+                        <img src="@/assets/imgs/password.png" alt="Password" />
                     </td>
                     <td class="userProf-td-info">
                         <p class="userProf-td-tittle"><b>Password</b></p>
@@ -48,7 +48,7 @@
                 </tr>
                 <tr class="userProf-tr">
                     <td class="userProf-td-img">
-                        <img src="@/assets/imgs/friends.png" alt="Username" />
+                        <img src="@/assets/imgs/friends.png" alt="Friends" />
                     </td>
                     <td class="userProf-td-info">
                         <p class="userProf-td-tittle"><b>Friends</b></p>
@@ -60,7 +60,7 @@
                 </tr>
                 <tr class="userProf-tr">
                     <td class="userProf-td-img">
-                        <img src="@/assets/imgs/myflits.png" alt="Username" />
+                        <img src="@/assets/imgs/myflits.png" alt="My flits" />
                     </td>
                     <td class="userProf-td-info">
                         <p class="userProf-td-tittle"><b>My Flits</b></p>
@@ -68,6 +68,23 @@
                     </td>
                     <td class="userProf-td-btn">
                         <button class="btn">View</button>
+                    </td>
+                </tr>
+                <tr class="userProf-tr">
+                    <td class="userProf-td-img">
+                        <img
+                            src="@/assets/imgs/deleleAccount.png"
+                            alt="My flits"
+                        />
+                    </td>
+                    <td class="userProf-td-info">
+                        <p class="userProf-td-tittle">
+                            <b>Delete my Account</b>
+                        </p>
+                        <p>No longer want to part of Flitter?</p>
+                    </td>
+                    <td class="userProf-td-btn">
+                        <button class="btn btn-delete">Delete</button>
                     </td>
                 </tr>
             </tbody>
@@ -162,5 +179,9 @@ export default defineComponent({
 
 .userProf-td-btn button:hover {
     transform: scale(1.1);
+}
+
+.btn-delete {
+    background-color: rgb(175, 5, 5) !important;
 }
 </style>

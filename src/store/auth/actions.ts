@@ -45,6 +45,20 @@ const actions: ActionTree<ILoginState, any> = {
             // no necesitamos hacer nada, seremos optimistas con el logout
         }         
         commit("setUser", null);
-    }
+    },
+    async signUp({ commit }, newUser: { email: string, password: string, username:string }) : Promise<boolean> {
+        try {
+            const { data } = await flitterApi.post<unknown, AxiosResponse<{ user: User }>>(
+                '/users/sign-up',
+               newUser,
+            );
+            //usamos la mutación para añadir el usuario
+            commit("setUser", data.user);
+        } catch {
+            // Si no podemos registrarnos esto quiere decir que tenemos algun problema con la info del sign up
+            return false;
+        }        
+        return true;
+    },
 }
 export default actions;

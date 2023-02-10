@@ -1,16 +1,18 @@
 <template>
     <div class="flit-div">
         <div class="flit-author">
-            <h3>{{ flit.user.username }}</h3>
+            <router-link :to="{ path: `/profile/${flit.userId}` }">
+                <h3>{{ flit.user.username }}</h3>
+            </router-link>
             <div>
-                <button
+                <!-- <button
                     class="btn-info"
                     id="flitDetail"
                     data-bs-toggle="modal"
                     :data-bs-target="modalId"
                 >
                     <img src="@/assets/imgs/detail.png" alt="Flit Detail" />
-                </button>
+                </button> -->
 
                 <button
                     v-if="user?._id == flit.userId"

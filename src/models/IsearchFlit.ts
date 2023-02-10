@@ -1,5 +1,5 @@
 export interface searchFlits {
-    userId?: string,
+    userIds?: string[],
     text?: string,
     limit?: number,
     skip?: number,

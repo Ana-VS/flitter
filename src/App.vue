@@ -1,10 +1,12 @@
-<template>
+<template>   
     <v-sheet v-if="isLoading">
         LOADING...
     </v-sheet>
     <v-sheet v-else>
-        <router-view />
+        <NavBar></NavBar>
+        <router-view/>
     </v-sheet>
+
     <custom-footer>
         <template v-slot:leftfootersection>
             <div class="footer-text">
@@ -20,6 +22,7 @@
 <script lang="ts">
 import { defineComponent, onMounted, ref } from "vue";
 import CustomFooter from "@/components/CustomFooter.vue";
+import NavBar from "@/components/Navbar/NavBarMain.vue";
 import useAuth from "./composables/useAuth";
 
 export default defineComponent({
@@ -47,6 +50,7 @@ export default defineComponent({
     },
     components: {
         CustomFooter,
+        NavBar,
     },
 });
 </script>

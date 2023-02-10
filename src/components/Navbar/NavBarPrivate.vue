@@ -16,12 +16,18 @@
             <ul>
                 <li>
                     <button class="btn">
-                        <router-link :to="{ name: 'profile' }"
-                            >My Profile
+                        <router-link :to="{ path: `/profile/${user?._id}`}">
+                            My Profile
                         </router-link>
                     </button>
                 </li>
-                <!-- <li @click="logOut"> -->
+                <li>
+                    <button class="btn">
+                        <router-link :to="{ path: `/settings`}">
+                            Settings
+                        </router-link>
+                    </button>
+                </li>
                 <li>
                     <button class="btn" @click="logout">
                         <router-link :to="{ name: 'login' }"

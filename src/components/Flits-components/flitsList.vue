@@ -4,8 +4,13 @@
         <div class="flitList">
             <flitBox v-for="flit in flits" :key="flit.id" :flit="flit" />
         </div>
-        <div class="loadMore-section">
-            <p class="loadMore-info">Showing {{ Loadlimit }} flits</p>
+
+        <div v-if="flits.length == 0" class="emptyFlits">
+            No hay flits para mostrar.
+        </div>
+
+        <div class="loadMore-section" v-if="flits.length > 0">
+            <p class="loadMore-info">Showing {{ flits.length }} flits</p>
             <button class="loadMore-btn" @click.prevent="loadMore">
                 Load more flits
             </button>
@@ -26,21 +31,34 @@ export default defineComponent({
     components: {
         flitBox,
     },
-    setup() {
+    props: {
+        userIds: {
+            type: Array,
+            required: false,
+        },
+    },
+    setup(props) {
+        // Agregar filtros de los props para la busqueda, el perfil y los usuairos que seguimos
+        const filters = {} as { userIds?: string[] };
+        if (props.userIds) filters.userIds = props.userIds as string[];
+
+    
         const Loadlimit = ref(10);
 
         const loadMore = () => {
             Loadlimit.value += 10;
-            fetchFlits({ skip: 0, limit: Loadlimit.value });
+            fetchFlits({ skip: 0, limit: Loadlimit.value, ...filters });
         };
+
         const scrollUp = () => {
             window.scrollTo({ top: 0, behavior: "smooth" });
         };
 
         const { isLoading, fetchFlits, flits } = useFlits();
+    
         // Correr la llamada para cargar los flits ni bien el componente se monte
         onMounted(() => {
-            fetchFlits({ skip: 0, limit: 10 });
+            fetchFlits({ skip: 0, limit: 10, ...filters });
         });
 
         return {
@@ -64,6 +82,13 @@ export default defineComponent({
 
 .loadMore-info {
     text-align: center;
+}
+.emptyFlits {
+    background-color: white;
+    padding: 15px 0px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
 }
 .loadMore-btn {
     background-color: #4a3aff;
@@ -94,4 +119,5 @@ export default defineComponent({
 #btnScrollUp-img {
     height: 45px;
 }
+
 </style>

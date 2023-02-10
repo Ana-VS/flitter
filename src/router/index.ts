@@ -15,16 +15,32 @@ const routes: Array<RouteRecordRaw> = [
             import(/* webpackChunkName: "about" */ "@/views/LoginView.vue"),
     },
     {
-        path: "/profile",
-        name: "profile",
-        component: () =>
-            import(/* webpackChunkName: "about" */ "@/views/ProfileView.vue"),
-    },
-    {
         path: "/createAccount",
         name: "createAccount",
         component: () =>
             import(/* webpackChunkName: "about" */ "@/views/CreateAccount.vue"),
+    },
+    {
+        path: "/404",
+        name: "notFound",
+        component: () =>
+            import(/* webpackChunkName: "about" */ "@/views/NotFound.vue"),
+    },
+    {
+        path: "/settings",
+        name: "settings",
+        component: () =>
+            import(/* webpackChunkName: "about" */ "@/views/SettingsView.vue"),
+    },
+    {
+        path: "/profile/:id",
+        name: "profile",
+        component: () =>
+            import(/* webpackChunkName: "about" */ "@/views/ProfileView.vue"),
+        props: (route) => {
+            const userId = route.params.id;
+            return { userId }
+        },
     },
     {
         path: "/:pathMatch(.*)",

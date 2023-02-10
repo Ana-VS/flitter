@@ -103,7 +103,7 @@ export default defineComponent({
     display: flex;
     flex-direction: column;
     padding: 10px 15px;
-    color: red,
+    color: red;
 }
 .formSection {
     display: flex;

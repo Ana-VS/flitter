@@ -27,10 +27,15 @@
                     <label for="">Password</label>
                     <input type="password" placeholder="Password" required v-model="password"/>
                 </div>
+
+                <div class="errorSection" v-if="errorMessage">
+                    {{ errorMessage }}
+                </div>
                 
                 <div class="formSection">
-                    <input class="formBtn" type="submit" value="Sign Up" @submit.prevent="signUp"/>
+                    <input class="formBtn" type="submit" value="Sign Up" @click.prevent="signUp"/>
                 </div>
+                
                 <div class="formSection">
                     <p>
                         Are you already a member?
@@ -58,21 +63,30 @@ export default defineComponent({
 
         const email= ref("");
         const username = ref("");
-        
         const password = ref("");
+
+        const isLoading = ref(false);
+        const errorMessage = ref("");
 
         const { signUp } = useAuth()
         return {
             email,
             username,
             password,
+            errorMessage,
+            isLoading,
             signUp: async () => {
-                await signUp (email.value, password.value, username.value),
-                router.push('/')
+                isLoading.value = true;
+                errorMessage.value = "";
+        
+                const success = await signUp(email.value, password.value, username.value);
+                if (success) router.push('/');
+                else errorMessage.value = "Datos invalidos o ya utilizados."
+
+                isLoading.value = false;
             }
-            
-            } 
-        }
+        } 
+    }
     
 })
 </script>
@@ -135,5 +149,11 @@ export default defineComponent({
 }
 .formBtn:hover {
     transform: scale(1.1);
+}
+.errorSection {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 15px;
+    color: red;
 }
 </style>

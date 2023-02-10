@@ -50,7 +50,7 @@ const actions: ActionTree<ILoginState, any> = {
         try {
             const { data } = await flitterApi.post<unknown, AxiosResponse<{ user: User }>>(
                 '/users/sign-up',
-               newUser,
+               {user: newUser},
             );
             //usamos la mutación para añadir el usuario
             commit("setUser", data.user);

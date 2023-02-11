@@ -7,10 +7,10 @@
                 <button v-if="sort == 'asc'" class="btn-sort" @click="changeRef">Ordenar por nuevos</button>
                 <button v-else class="btn-sort" @click="changeRef">Ordenar por antiguos</button>
                 <div class="sort-section-divider">|</div>
-                <button v-if="!onlyFollowing" class="btn-sort" @click="changeOnlyFollowing">Ver solo personas que sigo</button>
-                <button v-else class="btn-sort" @click="changeOnlyFollowing">Ver todo</button>
-                <div class="sort-section-divider">|</div>
-            
+                <button v-if="!onlyFollowing && user" class="btn-sort" @click="changeOnlyFollowing">Ver solo personas que sigo</button>
+                <button v-if="onlyFollowing && user" class="btn-sort" @click="changeOnlyFollowing">Ver todo</button>
+                <div v-if="user" class="sort-section-divider">|</div>
+
                 <form>
                     <div>
                         <input

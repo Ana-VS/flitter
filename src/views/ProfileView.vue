@@ -3,7 +3,7 @@
         <div class="UserProfile-box">
             <div class="UsernameFollow-box">
                 <h2 id="username-text">{{ user?.username }} ({{ user?.email }})</h2>
-                <v-sheet v-if="user?._id !== currentUser?._id">
+                <v-sheet v-if="currentUser?._id && user?._id !== currentUser?._id">
                     <v-sheet v-if="currentUser?.followingIds?.includes(user?._id)">
                         <button class="follow-btn" @click="followToggle">Dejar de seguir</button>
                     </v-sheet>

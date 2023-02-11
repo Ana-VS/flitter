@@ -9,8 +9,21 @@
                 <div class="sort-section-divider">|</div>
                 <button v-if="!onlyFollowing" class="btn-sort" @click="changeOnlyFollowing">Ver solo personas que sigo</button>
                 <button v-else class="btn-sort" @click="changeOnlyFollowing">Ver todo</button>
+                <div class="sort-section-divider">|</div>
+            
+                <form>
+                    <div>
+                        <input
+                            v-model="searchTerm"
+                            type="text"
+                            class="form-control"
+                            placeholder="Busca el texto de un flit"
+                        />
+                    </div>
+                </form>
+
             </div>
-            <FlitList :sort="sort" :userIds="userIds" />
+            <FlitList :sort="sort" :userIds="userIds" :text="searchTerm"/>
         </div>
     </div>
 </template>
@@ -33,15 +46,18 @@ export default defineComponent({
         const { flits } = useFlits();
         const sort = ref('desc' as 'asc' | 'desc');
         const userIds = ref(undefined as string[] | undefined);
+        const searchTerm = ref("");
 
         const onlyFollowing = ref(false);
 
         watch(onlyFollowing, () => {
-            let localUserIds = user?.value?.followingIds || undefined;
+            let localUserIds = onlyFollowing.value ? user?.value?.followingIds || undefined : undefined;
+            
             if (localUserIds && localUserIds.length == 0 && onlyFollowing.value) {
                 localUserIds = ["not-existing"]
             }
             userIds.value = localUserIds;
+            console.log(userIds.value)
         })
 
         return { 
@@ -53,6 +69,7 @@ export default defineComponent({
             changeRef: () => {
                 sort.value = sort.value == 'asc' ? 'desc' : 'asc'
             },
+            searchTerm,
             userIds,
         };
     },

@@ -9,9 +9,9 @@
                 </li>
             </ul>
         </div>
-        <div class="section" id="sectionMiddle">
+        <!-- <div class="section" id="sectionMiddle">
             <searchBox />
-        </div>
+        </div> -->
         <div class="section" id="sectionRight">
             <ul>
                 <li>
@@ -42,14 +42,14 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import searchBox from "@/components/Navbar/seachBox.vue";
+// import searchBox from "@/components/Navbar/seachBox.vue";
 import useAuth from "@/composables/useAuth";
 // import useAuth from "@/composables/useAuth";
 export default defineComponent({
     name: "PrivateNavbar",
-    components: {
-        searchBox,
-    },
+    // components: {
+    //     searchBox,
+    // },
     setup() {
         const { user, logout } = useAuth();
         const idUser = localStorage.getItem("idUser");

@@ -39,6 +39,10 @@ export default defineComponent({
         sort: {
             type: String,
             required: false,
+        },
+        text: {
+            type: String,
+            required: false,
         }
     },
     setup(props) {
@@ -49,7 +53,9 @@ export default defineComponent({
             limit: 10,
             sort: props.sort || undefined,
             userIds: props.userIds || undefined,
-        } as { userIds?: string[], sort: 'asc' | 'desc', limit: number });
+            text: props.text,
+            skip: 0,
+        } as { userIds?: string[], sort: 'asc' | 'desc', limit: number, skip: number, text: string, });
     
         watch(() => props.userIds, () => {
             console.log(props.userIds);
@@ -63,6 +69,10 @@ export default defineComponent({
             filters.value = { ...filters.value, sort: props.sort as 'asc' | 'desc' };   
         })
 
+        watch(() => props.text, () => {
+            filters.value = { ...filters.value, text: props.text as string };   
+        })
+
         const loadMore = () => {
             filters.value = { ...filters.value, limit: filters.value.limit + 10 };            
         };
@@ -73,7 +83,7 @@ export default defineComponent({
     
         // Correr la llamada para cargar los flits ni bien el componente se monte
         watch(filters, () => {
-            fetchFlits({ skip: 0, ...filters.value });
+            fetchFlits(filters.value);
         }, { immediate:true });
 
         return {

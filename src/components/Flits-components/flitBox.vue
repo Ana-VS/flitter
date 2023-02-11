@@ -1,11 +1,14 @@
 <template>
-    <div class="flit-div">
-        <div class="flit-author">
-            <router-link :to="{ path: `/profile/${flit.userId}` }">
-                <h3>{{ flit.user.username }}</h3>
-            </router-link>
-            <div>
-                <!-- <button
+    <div class="container">
+        <div class="flit-div">
+            <div class="flit-author">
+                <router-link :to="{ path: `/profile/${flit.userId}` }">
+                    <img src="@/assets/imgs/seeUser.png" alt="See user" />
+                    <h3>{{ flit.user.username }}</h3></router-link
+                >
+
+                <div>
+                    <!-- <button
                     class="btn-info"
                     id="flitDetail"
                     data-bs-toggle="modal"
@@ -14,69 +17,76 @@
                     <img src="@/assets/imgs/detail.png" alt="Flit Detail" />
                 </button> -->
 
-                <button
-                    v-if="user?._id == flit.userId"
-                    class="btn-info"
-                    id="flitDelete"
-                    @click="deleteF"
-                >
-                    <img src="@/assets/imgs/delete.png" alt="Delete Flit" />
-                </button>
-            </div>
-        </div>
-        <div class="flit-content">
-            <div class="flit-img" v-if="flit.imageUrl">
-                <img :src="flit.imageUrl" alt="Imagen no encontrada." />
-            </div>
-            <div class="flit-img" v-else>
-                <img src="@/assets/imgs/noPicture.jpg" alt="" />
-            </div>
-            <div class="flit-content-right">
-                <div class="flit-text" v-if="flit.text">
-                    {{ flit.text }}
-                </div>
-                <div class="flit-footer">
-                    <p>{{ flit.createdAt }}</p>
-                    <p class="kudos" @click.prevent="kudo">
-                        <img src="@/assets/imgs/liked.png" alt="Liked flit" />
-                        {{ flit.kudosCount }}
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Ventana modal detalle flit -->
-    <div
-        class="modal fade modal-box"
-        :id="flit._id"
-        tabindex="-1"
-        aria-hidden="true"
-    >
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">
-                        {{ flit.user.username }}'s flit detail
-                    </h5>
                     <button
-                        type="button"
-                        class="btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Close"
-                    ></button>
+                        v-if="user?._id == flit.userId"
+                        class="btn-info"
+                        id="flitDelete"
+                        @click="deleteF"
+                    >
+                        <img src="@/assets/imgs/delete.png" alt="Delete Flit" />
+                    </button>
                 </div>
-                <div class="modal-body">
-                    <div class="container">
-                        <img class="modal-img" :src="flit.imageUrl" />
+            </div>
+            <div class="flit-content">
+                <div class="flit-img" v-if="flit.imageUrl">
+                    <img :src="flit.imageUrl" alt="Imagen no encontrada." />
+                </div>
+                <div class="flit-img" v-else>
+                    <img src="@/assets/imgs/noPicture.jpg" alt="" />
+                </div>
+                <div class="flit-content-right">
+                    <div class="flit-text" v-if="flit.text">
+                        {{ flit.text }}
                     </div>
-                    <p class="modal-text">{{ flit.text }}</p>
+                    <div class="flit-footer">
+                        <p>{{ flit.createdAt }}</p>
+                        <p class="kudos" @click.prevent="kudo">
+                            <img
+                                src="@/assets/imgs/liked.png"
+                                alt="Liked flit"
+                            />
+                            {{ flit.kudosCount }}
+                        </p>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <p class="modal-date">{{ flit.createdAt }}</p>
-                    <p class="modal-kudos">
-                        <img src="@/assets/imgs/liked.png" alt="Liked flit" />
-                        {{ flit.kudosCount }}
-                    </p>
+            </div>
+        </div>
+        <!-- Ventana modal detalle flit -->
+        <div
+            class="modal fade modal-box"
+            :id="flit._id"
+            tabindex="-1"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">
+                            {{ flit.user.username }}'s flit detail
+                        </h5>
+                        <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                        ></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <img class="modal-img" :src="flit.imageUrl" />
+                        </div>
+                        <p class="modal-text">{{ flit.text }}</p>
+                    </div>
+                    <div class="modal-footer">
+                        <p class="modal-date">{{ flit.createdAt }}</p>
+                        <p class="modal-kudos">
+                            <img
+                                src="@/assets/imgs/liked.png"
+                                alt="Liked flit"
+                            />
+                            {{ flit.kudosCount }}
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -113,6 +123,10 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.container {
+    display: flex;
+    justify-content: center;
+}
 .flit-div {
     display: flex;
     flex-direction: column;
@@ -120,7 +134,7 @@ export default defineComponent({
     align-items: center;
     justify-content: center;
     background: #ffffff;
-    margin: 10px 10% 10px 10%;
+    margin: 10px 10px 10px 10px;
     padding: 20px 10px 5px 10px;
     border-radius: 10px;
     width: 80%;
@@ -129,12 +143,27 @@ export default defineComponent({
     width: 400px;
 }
 .flit-author {
-    margin: 15px 30px 5px 30px;
+    margin: 0px 0px 5px 50px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
+.flit-author a {
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+}
+.flit-author a img:hover {
+    transform: scale(1.2);
+}
+.flit-author a img {
+    height: 20px;
+}
+
+.flit-author a h3 {
+    margin: 0px 0px 0px 0px;
+}
 .btn-info {
     float: right;
     margin: 0px 10px;
@@ -147,12 +176,6 @@ export default defineComponent({
 
 .btn-info img {
     height: 30px;
-}
-.flit-author h3 {
-    text-align: left;
-    font-weight: bolder;
-    padding: 3px 0px;
-    font-size: 14pt;
 }
 
 .flit-img {
@@ -171,7 +194,7 @@ export default defineComponent({
     text-align: justify;
 }
 .flit-footer {
-    padding: 10px 3px;
+    padding: 10px 0px 10px 3px;
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
@@ -222,12 +245,14 @@ export default defineComponent({
 .modal-kudos img {
     height: 20px;
 }
+#flitDelete {
+    padding: 0px 30px;
+    background: none;
+}
 
 @media screen and (min-width: 992px) {
     .flit-div {
-        margin: 10px 15% 10px 15%;
-        padding: 0;
-        width: 70%;
+        width: 900px;
     }
     .flit-content {
         display: flex;
@@ -239,28 +264,28 @@ export default defineComponent({
     .flit-author h3 {
         text-align: left;
         font-weight: bolder;
-        padding: 15px 20px 0px 25px;
+        padding: 0px 20px 0px 10px;
         font-size: 14pt;
     }
 
     .flit-img {
         padding: 5px 15px 10px 15px;
-        width: 50%;
+        max-width: 350px;
     }
     .flit-img img {
         object-fit: cover;
         padding: 3px 0px;
-        max-height: 250px;
-        width: 100%;
+        max-height: 400px;
+        width: 300px;
         border-radius: 7pt;
     }
     .flit-text {
-        padding: 20px 40px 20px 20px;
-        font-size: 10pt;
+        padding: 15px 40px 20px 0px;
+        font-size: 12pt;
         text-align: justify;
     }
     .flit-footer {
-        padding: 20px 40px 20px 20px;
+        padding: 20px 20px 10px 0px;
         display: flex;
         align-items: flex-end;
         justify-content: space-between;

@@ -4,11 +4,31 @@
             <FlitAdd v-if="user" />
 
             <div class="sort-section">
-                <button v-if="sort == 'asc'" class="btn-sort" @click="changeRef">Ordenar por nuevos</button>
-                <button v-else class="btn-sort" @click="changeRef">Ordenar por antiguos</button>
+                <button
+                    v-if="sort == 'asc'"
+                    class="btn-sort"
+                    @click="changeRef"
+                >
+                    Newest flits
+                </button>
+                <button v-else class="btn-sort" @click="changeRef">
+                    Oldest flits
+                </button>
                 <div class="sort-section-divider">|</div>
-                <button v-if="!onlyFollowing && user" class="btn-sort" @click="changeOnlyFollowing">Ver solo personas que sigo</button>
-                <button v-if="onlyFollowing && user" class="btn-sort" @click="changeOnlyFollowing">Ver todo</button>
+                <button
+                    v-if="!onlyFollowing && user"
+                    class="btn-sort"
+                    @click="changeOnlyFollowing"
+                >
+                    Friends' flits
+                </button>
+                <button
+                    v-if="onlyFollowing && user"
+                    class="btn-sort"
+                    @click="changeOnlyFollowing"
+                >
+                    All flits
+                </button>
                 <div v-if="user" class="sort-section-divider">|</div>
 
                 <form>
@@ -17,13 +37,12 @@
                             v-model="searchTerm"
                             type="text"
                             class="form-control"
-                            placeholder="Busca el texto de un flit"
+                            placeholder="Search for flits"
                         />
                     </div>
                 </form>
-
             </div>
-            <FlitList :sort="sort" :userIds="userIds" :text="searchTerm"/>
+            <FlitList :sort="sort" :userIds="userIds" :text="searchTerm" />
         </div>
     </div>
 </template>
@@ -44,30 +63,38 @@ export default defineComponent({
     setup() {
         const { user } = useAuth();
         const { flits } = useFlits();
-        const sort = ref('desc' as 'asc' | 'desc');
+        const sort = ref("desc" as "asc" | "desc");
         const userIds = ref(undefined as string[] | undefined);
         const searchTerm = ref("");
 
         const onlyFollowing = ref(false);
 
         watch(onlyFollowing, () => {
-            let localUserIds = onlyFollowing.value ? user?.value?.followingIds || undefined : undefined;
-            
-            if (localUserIds && localUserIds.length == 0 && onlyFollowing.value) {
-                localUserIds = ["not-existing"]
+            let localUserIds = onlyFollowing.value
+                ? user?.value?.followingIds || undefined
+                : undefined;
+
+            if (
+                localUserIds &&
+                localUserIds.length == 0 &&
+                onlyFollowing.value
+            ) {
+                localUserIds = ["not-existing"];
             }
             userIds.value = localUserIds;
-            console.log(userIds.value)
-        })
+            console.log(userIds.value);
+        });
 
-        return { 
-            user, 
+        return {
+            user,
             sort,
             flits,
             onlyFollowing,
-            changeOnlyFollowing: () => { onlyFollowing.value = !onlyFollowing.value },
+            changeOnlyFollowing: () => {
+                onlyFollowing.value = !onlyFollowing.value;
+            },
             changeRef: () => {
-                sort.value = sort.value == 'asc' ? 'desc' : 'asc'
+                sort.value = sort.value == "asc" ? "desc" : "asc";
             },
             searchTerm,
             userIds,
@@ -103,12 +130,26 @@ export default defineComponent({
 }
 
 .btn-sort {
-    background: none!important;
+    background: none !important;
     border: none;
-    padding: 0!important;
-    color: #069;
-    text-decoration: underline;
+    padding: 0 !important;
+    color: #0d6efd;
+    text-decoration: none;
     cursor: pointer;
+    font-size: 12pt;
+}
+.btn-sort:hover {
+    font-weight: bolder;
+}
+.seachInput {
+    padding: 5px 10px;
+    border-radius: 15px;
+    margin: 3px 15px 3px 3px;
+    font-size: 10pt;
 }
 
+.seachInput:focus {
+    border: solid 1px #f3f3f4;
+    box-shadow: 0 0 4px #27244d;
+}
 </style>

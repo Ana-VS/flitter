@@ -29,11 +29,18 @@
                     v-model="imageUrl"
                     class="form-control flitadd-input"
                     type="url"
+                    pattern="https://.*"
                     placeholder="Insert image url"
                 />
             </div>
 
-            <input id="flitadd-btn" type="submit" value="Flit" @click.prevent="add" :disabled="!text && !imageUrl"/>
+            <input
+                id="flitadd-btn"
+                type="submit"
+                value="Flit"
+                @click.prevent="add"
+                :disabled="!text && !imageUrl"
+            />
         </form>
     </div>
 </template>
@@ -49,9 +56,9 @@ export default defineComponent({
         const text = ref("");
         const imageUrl = ref("");
 
-        const {user} = useAuth();
+        const { user } = useAuth();
         const { addFlit } = useFlits();
-        
+
         return {
             user,
             add: () => {
@@ -59,10 +66,10 @@ export default defineComponent({
                 imageUrl.value = "";
                 text.value = "";
             },
-            text, 
+            text,
             imageUrl,
-        }
-    }
+        };
+    },
 });
 </script>
 

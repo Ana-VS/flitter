@@ -30,8 +30,6 @@ export default defineComponent({
     setup() {
         const isLoading = ref(true);
         const { user, verify } = useAuth();
-
-        console.log("aca? ", user);
         
         // Tratar de obtener al usuario logeado
         const localVerify = async () => {

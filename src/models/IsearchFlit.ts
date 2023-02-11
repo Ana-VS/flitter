@@ -3,4 +3,5 @@ export interface searchFlits {
     text?: string,
     limit?: number,
     skip?: number,
+    sort?: 'asc' | 'desc',
 }

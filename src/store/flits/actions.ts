@@ -17,6 +17,7 @@ const actions: ActionTree<IFlitState, any> = {
         const params = [];
         if (search.limit) params.push(`limit=${search.limit}`);
         if (search.skip) params.push(`skip=${search.skip}`);
+        if (search.sort) params.push(`sort=${search.sort}`);
         if (search.userIds) {
             for (const userId of search.userIds) {
                 params.push(`userIds=${userId}`);

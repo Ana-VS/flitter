@@ -60,5 +60,18 @@ const actions: ActionTree<ILoginState, any> = {
         }        
         return true;
     },
+    async followToggle({ commit }, id: string ) : Promise<boolean> {
+        try {
+            const { data } = await flitterApi.post<unknown, AxiosResponse<{ user: User }>>(
+                `/users/follow-toggle/${id}`,
+            );
+            //usamos la mutación para actualizar el usuario
+            commit("setUser", data.user);
+        } catch {
+            // Si no podemos seguir eso quiere decir que tenemos un problema 
+            return false;
+        }        
+        return true;
+    },
 }
 export default actions;

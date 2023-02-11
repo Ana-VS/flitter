@@ -5,10 +5,10 @@
                 <h2 id="username-text">{{ user?.username }} ({{ user?.email }})</h2>
                 <v-sheet v-if="user?._id !== currentUser?._id">
                     <v-sheet v-if="currentUser?.followingIds?.includes(user?._id)">
-                        <button class="follow-btn">Dejar de seguir</button>
+                        <button class="follow-btn" @click="followToggle">Dejar de seguir</button>
                     </v-sheet>
-                    <v-sheet>
-                        <button class="follow-btn">Seguir</button>
+                    <v-sheet v-else>
+                        <button class="follow-btn" @click="followToggle">Seguir</button>
                     </v-sheet>
 
                 </v-sheet>
@@ -41,6 +41,7 @@ export default defineComponent({
     setup(props) {
         const router = useRouter();
         const currentUser = useAuth().user;
+        const followToggleStore = useAuth().followToggle;
         const user = ref(null as (User | null));
 
         const loadUser = async () => {
@@ -62,7 +63,10 @@ export default defineComponent({
 
         return {
             user,
-            currentUser,
+            currentUser, 
+            followToggle: () => {
+                followToggleStore(props.userId);
+            }
         };
     },
     components: {
@@ -103,6 +107,10 @@ export default defineComponent({
     font-weight: bold;
     border-radius: 20px !important;    
     margin-left: 100px;
+}
+
+.follow-btn:hover {
+    transform: scale(1.1);
 }
 
 </style>

@@ -13,7 +13,10 @@ const useUsers = () => {
         login: (email: string, password: string) => store.dispatch("auth/login", { email, password }),
         logout: () => store.dispatch("auth/logout"),
         verify: () => store.dispatch("auth/verify"),
-        signUp: (email: string, password: string, username:string) => store.dispatch("auth/signUp", {email, password, username})
+        signUp: (email: string, password: string, username:string) => store.dispatch("auth/signUp", {email, password, username}),
+        followToggle: (id: string) => {
+            store.dispatch("auth/followToggle", id);
+        }
     };
 };
 

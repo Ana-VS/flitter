@@ -30,9 +30,10 @@ const actions: ActionTree<IFlitState, any> = {
         }
 
         // obtenemos los datos de manera asíncrona, array de tweets
-        const { data } = await flitterApi.get<unknown, AxiosResponse<{ tweets: Flit[] }>>(
-            queryParams
-        );
+        const { data } = await flitterApi.get<
+            unknown,
+            AxiosResponse<{ tweets: Flit[] }>
+        >(queryParams);
 
         // usamos la mutación para poner isLoading = false
         commit("setIsLoading", false);
@@ -40,12 +41,12 @@ const actions: ActionTree<IFlitState, any> = {
         // usamos la mutación para volcar los datos obtenidos en la variable del state tweets
         commit("setFlits", data.tweets);
     },
-    async addFlit({ commit }, newFlit: { text?: string, imageUrl?: string }) {
+    async addFlit({ commit }, newFlit: { text?: string; imageUrl?: string }) {
         try {
-            const { data } = await flitterApi.post<unknown, AxiosResponse<{ tweet: Flit }>>(
-                '/tweets',
-                { tweet: newFlit },
-            );
+            const { data } = await flitterApi.post<
+                unknown,
+                AxiosResponse<{ tweet: Flit }>
+            >("/tweets", { tweet: newFlit });
             // usamos la mutacion para agregar el flit
             commit("addFlit", data.tweet);
         } catch {
@@ -54,24 +55,28 @@ const actions: ActionTree<IFlitState, any> = {
         }
         return true;
     },
-    async deleteFlit({ commit }, id: string ) {
-        try {
-            await flitterApi.delete<unknown, AxiosResponse>(
-                `/tweets/${id}`,
-            );
-            //  usamos la mutacion para quitar el flit
-            commit("deleteFlit", id);
-        } catch {
-            // Retornamos falso si no lo pudimos crear (Esto quiere decir que no pusimos los fields requeridos)
-            return false;
+    async deleteFlit({ commit }, id: string) {
+        const acept = confirm("Are you sure you want to delete this Flit?");
+        if (acept) {
+            try {
+                await flitterApi.delete<unknown, AxiosResponse>(
+                    `/tweets/${id}`
+                );
+                //  usamos la mutacion para quitar el flit
+                commit("deleteFlit", id);
+            } catch {
+                // Retornamos falso si no lo pudimos crear (Esto quiere decir que no pusimos los fields requeridos)
+                return false;
+            }
+            return true;
         }
-        return true;
     },
-    async toggleKudo({ commit }, id: string ) {
+    async toggleKudo({ commit }, id: string) {
         try {
-            const { data } = await flitterApi.post<unknown, AxiosResponse<{ tweet: Flit }>>(
-                `/tweets/kudo-toggle/${id}`,
-            );
+            const { data } = await flitterApi.post<
+                unknown,
+                AxiosResponse<{ tweet: Flit }>
+            >(`/tweets/kudo-toggle/${id}`);
             //  usamos la mutacion para quitar el flit
             commit("updateFlit", data.tweet);
         } catch {

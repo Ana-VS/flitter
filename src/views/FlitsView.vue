@@ -141,14 +141,13 @@ export default defineComponent({
 .btn-sort:hover {
     font-weight: bolder;
 }
-.seachInput {
+.form-control {
     padding: 5px 10px;
     border-radius: 15px;
     margin: 3px 15px 3px 3px;
     font-size: 10pt;
 }
-
-.seachInput:focus {
+.form-control:focus {
     border: solid 1px #f3f3f4;
     box-shadow: 0 0 4px #27244d;
 }

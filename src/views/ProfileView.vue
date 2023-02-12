@@ -2,24 +2,56 @@
     <div v-if="user">
         <div class="UserProfile-box">
             <div class="UsernameFollow-box">
-                <h2 id="username-text">{{ user?.username }} ({{ user?.email }})</h2>
-                <v-sheet v-if="currentUser?._id && user?._id !== currentUser?._id">
-                    <v-sheet v-if="currentUser?.followingIds?.includes(user?._id)">
-                        <button class="follow-btn" @click="followToggle">Dejar de seguir</button>
+                <div class="User-data">
+                    <div>
+                        <img
+                            src="@/assets/imgs/username.png"
+                            alt="Username"
+                            class="icon"
+                        />
+                        <h2>{{ user?.username }}</h2>
+                    </div>
+                    <div>
+                        <img
+                            src="@/assets/imgs/email.png"
+                            alt="Email"
+                            class="icon"
+                        />
+                        <h3>{{ user?.email }}</h3>
+                    </div>
+                </div>
+                <v-sheet
+                    v-if="currentUser?._id && user?._id !== currentUser?._id"
+                >
+                    <v-sheet
+                        v-if="currentUser?.followingIds?.includes(user?._id)"
+                    >
+                        <button class="follow-btn" @click="followToggle">
+                            Unfollow
+                            <img
+                                src="@/assets/imgs/unfollow.png"
+                                alt="Unfollow"
+                                class="icon-follow"
+                            />
+                        </button>
                     </v-sheet>
                     <v-sheet v-else>
-                        <button class="follow-btn" @click="followToggle">Seguir</button>
+                        <button class="follow-btn" @click="followToggle">
+                            Follow
+                            <img
+                                src="@/assets/imgs/follow.png"
+                                alt="follow"
+                                class="icon-follow"
+                            />
+                        </button>
                     </v-sheet>
-
                 </v-sheet>
             </div>
         </div>
-        <FlitList :userIds="[user._id]"/>
+        <FlitList :userIds="[user._id]" />
     </div>
 
-    <div v-else>
-        Loading...
-    </div>
+    <div v-else>Loading...</div>
 </template>
 <script lang="ts">
 import useAuth from "@/composables/useAuth";
@@ -42,19 +74,20 @@ export default defineComponent({
         const router = useRouter();
         const currentUser = useAuth().user;
         const followToggleStore = useAuth().followToggle;
-        const user = ref(null as (User | null));
+        const user = ref(null as User | null);
 
         const loadUser = async () => {
             try {
-                const response = await flitterApi.get<unknown, AxiosResponse<{ user: User }>>(
-                    `/users/${props.userId}`,
-                );
+                const response = await flitterApi.get<
+                    unknown,
+                    AxiosResponse<{ user: User }>
+                >(`/users/${props.userId}`);
 
                 user.value = response.data.user;
             } catch {
-                router.push('/404');
+                router.push("/404");
             }
-        }
+        };
 
         // Cargar los datos del usuario
         onMounted(() => {
@@ -63,10 +96,10 @@ export default defineComponent({
 
         return {
             user,
-            currentUser, 
+            currentUser,
             followToggle: () => {
                 followToggleStore(props.userId);
-            }
+            },
         };
     },
     components: {
@@ -77,7 +110,6 @@ export default defineComponent({
 
 <style scoped>
 .UserProfile-box {
-    align-content: center !important;
     width: 70%;
     background: white;
     padding: 20px;
@@ -87,30 +119,61 @@ export default defineComponent({
 
 .UsernameFollow-box {
     display: flex;
-    width: 60%;
-    padding: 5px;
-}
-
-.username-text {
+    justify-content: space-between;
+    align-items: flex-start;
     padding: 15px;
-    flex-grow: 1;
+}
+.User-data div {
+    font-size: 16pt;
+    font-weight: bolder;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    margin: 10px;
 }
 
+.User-data div h2 {
+    font-size: 16pt;
+    font-weight: bolder;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    margin-bottom: 5px;
+}
+
+.User-data div h3 {
+    font-size: 16pt;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    margin-bottom: 5px;
+}
 .follow-btn {
     background-color: #4a3aff;
     color: white;
     border: 0px;
-    font-size: 14pt;
+    font-size: 12pt;
     padding: 15px;
     align-self: center;
-    width: 150px !important;
+    min-width: 160px !important;
     font-weight: bold;
-    border-radius: 20px !important;    
+    border-radius: 20px !important;
     margin-left: 100px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
 }
 
 .follow-btn:hover {
     transform: scale(1.1);
 }
 
+.icon-follow {
+    height: 25px;
+}
+.icon {
+    height: 40px;
+    margin-right: 10px;
+}
 </style>

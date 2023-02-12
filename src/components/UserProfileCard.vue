@@ -8,7 +8,7 @@
             />
         </div>
         <div class="UserProfile-right">
-            <h2 id="gretting">Hey there, {{ user.username }}!</h2>
+            <h2 id="gretting">Hey there, {{ user?.username }}!</h2>
             <tbody class="userProf-tbody">
                 <tr class="userProf-tr">
                     <td class="userProf-td-img">

@@ -9,21 +9,18 @@
                 </li>
             </ul>
         </div>
-        <!-- <div class="section" id="sectionMiddle">
-            <searchBox />
-        </div> -->
         <div class="section" id="sectionRight">
             <ul>
                 <li>
                     <button class="btn">
-                        <router-link :to="{ path: `/profile/${user?._id}`}">
+                        <router-link :to="{ path: `/profile/${user?._id}` }">
                             My Profile
                         </router-link>
                     </button>
                 </li>
                 <li>
                     <button class="btn">
-                        <router-link :to="{ path: `/settings`}">
+                        <router-link :to="{ path: `/settings` }">
                             Settings
                         </router-link>
                     </button>
@@ -75,7 +72,7 @@ nav {
     background: white;
 }
 .section {
-    width: 33%;
+    width: 50%;
     display: flex;
     align-items: center;
 }
@@ -89,7 +86,7 @@ li {
     font-weight: bold;
 }
 a {
-    color: white;
+    color: white !important;
     text-decoration: none;
     font-size: 12pt;
     padding: 10px;
@@ -104,7 +101,14 @@ a {
     padding: 10px;
     border-radius: 20px;
 }
-.btn:hover,
+.btn:hover {
+    background-color: #4a3aff;
+    color: white !important;
+    padding: 10px;
+    border-radius: 20px;
+    transform: scale(1.1) !important;
+}
+
 #AppName:hover {
     transform: scale(1.1);
 }
@@ -116,9 +120,7 @@ a {
 
 #sectionRight {
     display: flex;
-    justify-content: center;
-}
-#sectionMiddle {
-    padding-left: 5%;
+    justify-content: right;
+    padding-right: 30px;
 }
 </style>

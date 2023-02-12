@@ -9,9 +9,6 @@
                 </li>
             </ul>
         </div>
-        <!-- <div class="section" id="sectionMiddle">
-            <searchBox />
-        </div> -->
         <div class="section" id="sectionRight">
             <ul>
                 <li>
@@ -58,7 +55,7 @@ nav {
     background: white;
 }
 .section {
-    width: 33%;
+    width: 50%;
     display: flex;
     align-items: center;
 }
@@ -94,7 +91,7 @@ a {
     border-radius: 20px;
     transform: scale(1.1) !important;
 }
-.btn:hover,
+
 #AppName:hover {
     transform: scale(1.1) !important;
 }
@@ -106,9 +103,7 @@ a {
 
 #sectionRight {
     display: flex;
-    justify-content: flex-end;
-}
-#sectionMiddle {
-    padding-left: 5%;
+    justify-content: right;
+    padding-right: 30px;
 }
 </style>

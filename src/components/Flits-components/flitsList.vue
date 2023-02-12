@@ -43,48 +43,70 @@ export default defineComponent({
         text: {
             type: String,
             required: false,
-        }
+        },
     },
     setup(props) {
         const { isLoading, fetchFlits, flits } = useFlits();
 
         // Agregar filtros de los props para la busqueda, el perfil y los usuairos que seguimos
         const filters = ref({
-            limit: 10,
+            limit: 5,
             sort: props.sort || undefined,
             userIds: props.userIds || undefined,
             text: props.text,
             skip: 0,
-        } as { userIds?: string[], sort: 'asc' | 'desc', limit: number, skip: number, text: string, });
-    
-        watch(() => props.userIds, () => {
-            console.log(props.userIds);
-            filters.value = { 
-                ...filters.value, 
-                userIds: props.userIds as string[] 
-            };   
-        });
+        } as { userIds?: string[]; sort: "asc" | "desc"; limit: number; skip: number; text: string });
 
-        watch(() => props.sort, () => {
-            filters.value = { ...filters.value, sort: props.sort as 'asc' | 'desc' };   
-        })
+        watch(
+            () => props.userIds,
+            () => {
+                console.log(props.userIds);
+                filters.value = {
+                    ...filters.value,
+                    userIds: props.userIds as string[],
+                };
+            }
+        );
 
-        watch(() => props.text, () => {
-            filters.value = { ...filters.value, text: props.text as string };   
-        })
+        watch(
+            () => props.sort,
+            () => {
+                filters.value = {
+                    ...filters.value,
+                    sort: props.sort as "asc" | "desc",
+                };
+            }
+        );
+
+        watch(
+            () => props.text,
+            () => {
+                filters.value = {
+                    ...filters.value,
+                    text: props.text as string,
+                };
+            }
+        );
 
         const loadMore = () => {
-            filters.value = { ...filters.value, limit: filters.value.limit + 10 };            
+            filters.value = {
+                ...filters.value,
+                limit: filters.value.limit + 5,
+            };
         };
 
         const scrollUp = () => {
             window.scrollTo({ top: 0, behavior: "smooth" });
         };
-    
+
         // Correr la llamada para cargar los flits ni bien el componente se monte
-        watch(filters, () => {
-            fetchFlits(filters.value);
-        }, { immediate:true });
+        watch(
+            filters,
+            () => {
+                fetchFlits(filters.value);
+            },
+            { immediate: true }
+        );
 
         return {
             isLoading,
@@ -143,6 +165,4 @@ export default defineComponent({
 #btnScrollUp-img {
     height: 45px;
 }
-
-
 </style>

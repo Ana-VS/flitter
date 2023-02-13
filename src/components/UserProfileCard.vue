@@ -52,7 +52,7 @@
                     </td>
                     <td class="userProf-td-info">
                         <p class="userProf-td-tittle"><b>Friends</b></p>
-                        <p>Number friends</p>
+                        <p>{{ user?.followingIds.length }} friends</p>
                     </td>
                     <td class="userProf-td-btn">
                         <button class="btn">View</button>
@@ -64,10 +64,16 @@
                     </td>
                     <td class="userProf-td-info">
                         <p class="userProf-td-tittle"><b>My Flits</b></p>
-                        <p>Number flits</p>
+                        <p>5 flits</p>
                     </td>
                     <td class="userProf-td-btn">
-                        <button class="btn">View</button>
+                        <button class="btn">
+                            <router-link
+                                :to="{ path: `/profile/${user?._id}` }"
+                            >
+                                View
+                            </router-link>
+                        </button>
                     </td>
                 </tr>
                 <tr class="userProf-tr">
@@ -174,6 +180,10 @@ export default defineComponent({
 .userProf-td-btn button {
     background-color: #4a3aff;
     width: 90px;
+    color: white;
+}
+.userProf-td-btn button a {
+    text-decoration: none;
     color: white;
 }
 

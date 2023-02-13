@@ -6,13 +6,21 @@
         <div>
             <nav class="imgFooter">
                 <div class="girls">
-                    <a href="" target="_blank" rel="noopener noreferrer">
+                    <a
+                        href="https://www.linkedin.com/in/ana-virseda-sanz/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
                         <img class="RRSS" src="@/assets/imgs/linkedin.png" />
                     </a>
                     <p>Ana</p>
                 </div>
                 <div class="girls">
-                    <a href="" target="_blank" rel="noopener noreferrer">
+                    <a
+                        href="https://www.linkedin.com/in/caro-cortfreu/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
                         <img class="RRSS" src="@/assets/imgs/linkedin.png" />
                     </a>
                     <p>Carolina</p>

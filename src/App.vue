@@ -1,10 +1,10 @@
-<template>   
-    <v-sheet v-if="isLoading">
-        LOADING...
-    </v-sheet>
+<template>
+    <v-sheet v-if="isLoading"> LOADING... </v-sheet>
     <v-sheet v-else>
-        <NavBar></NavBar>
-        <router-view/>
+        <div id="screen">
+            <NavBar></NavBar>
+            <router-view />
+        </div>
     </v-sheet>
 
     <custom-footer>
@@ -30,16 +30,16 @@ export default defineComponent({
     setup() {
         const isLoading = ref(true);
         const { user, verify } = useAuth();
-        
+
         // Tratar de obtener al usuario logeado
         const localVerify = async () => {
             isLoading.value = true;
             await verify();
             isLoading.value = false;
-        }
+        };
         onMounted(() => {
             localVerify();
-        })
+        });
 
         return {
             isLoading,
@@ -52,7 +52,6 @@ export default defineComponent({
     },
 });
 </script>
-
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Arvo&display=swap");
@@ -70,6 +69,9 @@ export default defineComponent({
     background: #f2f2f2;
 }
 
+#screen {
+    min-height: 100vh;
+}
 nav {
     padding: 30px;
 }

@@ -50,8 +50,8 @@ npm run lint
 
 ## Autoras:
 
--   Ana Vírseda Sanz
--   Carolina Cortez Freudenthal
--   María Ángeles Córdoba García Consuegra
--   Paloma Montero Merello
--   Sofia Romero Kamermann
+-   [Ana Vírseda Sanz](https://www.linkedin.com/in/ana-virseda-sanz/)
+-   [Carolina Cortez Freudenthal](https://www.linkedin.com/in/caro-cortfreu/)
+-   [María Ángeles Córdoba García Consuegra](https://www.linkedin.com/in/mariaangelescordoba/)
+-   [Paloma Montero Merello](https://www.linkedin.com/in/Paloma-Montero)
+-   [Sofia Romero Kamermann](https://www.linkedin.com/in/sofiaromerokamermann)

@@ -18,24 +18,34 @@
                     <input
                         type="text"
                         placeholder="myUsername"
-                        pattern="^[a-zA-Z]*$"
+                        onkeydown="return /[a-zA-Z]/i.test(event.key)"
                         required
                         v-model="username"
                     />
                 </div>
                 <div class="formSection">
                     <label for="">Password</label>
-                    <input type="password" placeholder="Password" required v-model="password"/>
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        required
+                        v-model="password"
+                    />
                 </div>
 
                 <div class="errorSection" v-if="errorMessage">
                     {{ errorMessage }}
                 </div>
-                
+
                 <div class="formSection">
-                    <input class="formBtn" type="submit" value="Sign Up" @click.prevent="signUp"/>
+                    <input
+                        class="formBtn"
+                        type="submit"
+                        value="Sign Up"
+                        @click.prevent="signUp"
+                    />
                 </div>
-                
+
                 <div class="formSection">
                     <p>
                         Are you already a member?
@@ -50,25 +60,24 @@
 </template>
 
 <script lang="ts">
-import useAuth from '@/composables/useAuth'
+import useAuth from "@/composables/useAuth";
 
-import { defineComponent, ref } from 'vue'
-import { useRouter } from 'vue-router';
-
+import { defineComponent, ref } from "vue";
+import { useRouter } from "vue-router";
 
 export default defineComponent({
-    name: 'signUpForm',
+    name: "signUpForm",
     setup() {
         const router = useRouter();
 
-        const email= ref("");
+        const email = ref("");
         const username = ref("");
         const password = ref("");
 
         const isLoading = ref(false);
         const errorMessage = ref("");
 
-        const { signUp } = useAuth()
+        const { signUp } = useAuth();
         return {
             email,
             username,
@@ -78,19 +87,21 @@ export default defineComponent({
             signUp: async () => {
                 isLoading.value = true;
                 errorMessage.value = "";
-        
-                const success = await signUp(email.value, password.value, username.value);
-                if (success) router.push('/');
-                else errorMessage.value = "Datos invalidos o ya utilizados."
+
+                const success = await signUp(
+                    email.value,
+                    password.value,
+                    username.value
+                );
+                if (success) router.push("/");
+                else errorMessage.value = "Datos invalidos o ya utilizados.";
 
                 isLoading.value = false;
-            }
-        } 
-    }
-    
-})
+            },
+        };
+    },
+});
 </script>
-
 
 <style scoped>
 .formArea {

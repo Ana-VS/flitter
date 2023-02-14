@@ -36,13 +36,21 @@
                     <p>Ángeles</p>
                 </div>
                 <div class="girls">
-                    <a href="" target="_blank" rel="noopener noreferrer">
+                    <a
+                        href="https://www.linkedin.com/in/Paloma-Montero"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
                         <img class="RRSS" src="@/assets/imgs/linkedin.png" />
                     </a>
                     <p>Paloma</p>
                 </div>
                 <div class="girls">
-                    <a href="" target="_blank" rel="noopener noreferrer">
+                    <a
+                        href="https://www.linkedin.com/in/sofiaromerokamermann"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
                         <img class="RRSS" src="@/assets/imgs/linkedin.png" />
                     </a>
                     <p>Sofía</p>
